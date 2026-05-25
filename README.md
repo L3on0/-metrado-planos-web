@@ -28,7 +28,8 @@ El proyecto combina una interfaz web en Streamlit con procesadores de archivos d
 |       |-- excel_exporter.py
 |       `-- pdf_exporter.py
 |-- data/
-|   `-- references/
+|   |-- references/
+|   `-- templates/
 `-- outputs/
 ```
 
@@ -86,6 +87,14 @@ La carpeta `data/references/` contiene documentos base y extracciones en texto/J
 - `resumen_contexto_archivos_extraidos.json`
 
 Los archivos `.txt` sirven para lectura rapida y busqueda manual. Los archivos `.json` conservan la extraccion hoja por hoja para que el sistema pueda usarlos como contexto estructurado.
+
+## Plantillas de metrado
+
+La carpeta `data/templates/` contiene el formato predeterminado de salida:
+
+- `metrado_schema.json`: define la hoja de sustento, la hoja resumen, columnas, tipos de dato, unidades permitidas y reglas de agrupacion.
+
+La aplicacion debe mantener este formato como base para que los metrados sean revisables, comparables y exportables a presupuesto.
 
 ## Estado actual
 

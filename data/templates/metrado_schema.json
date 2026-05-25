@@ -1,0 +1,263 @@
+{
+  "schema_name": "formato_base_metrado",
+  "version": "1.0.0",
+  "description": "Formato base para registrar, sustentar y resumir metrados extraidos desde planos.",
+  "units_allowed": ["m", "m2", "m3", "kg", "und", "glb"],
+  "specialties_allowed": [
+    "arquitectura",
+    "estructuras",
+    "instalaciones_sanitarias",
+    "instalaciones_electricas",
+    "otros"
+  ],
+  "detail_sheet": {
+    "sheet_name": "Sustento de metrados",
+    "purpose": "Registrar cada medicion individual con su fuente y formula de calculo.",
+    "columns": [
+      {
+        "key": "item",
+        "label": "Item",
+        "type": "integer",
+        "required": true,
+        "description": "Numero correlativo de la fila de sustento."
+      },
+      {
+        "key": "especialidad",
+        "label": "Especialidad",
+        "type": "string",
+        "required": true,
+        "allowed_values_ref": "specialties_allowed",
+        "description": "Rubro del plano o partida."
+      },
+      {
+        "key": "codigo_partida",
+        "label": "Codigo de partida",
+        "type": "string",
+        "required": false,
+        "description": "Codigo normalizado de la partida, si se conoce."
+      },
+      {
+        "key": "partida",
+        "label": "Partida",
+        "type": "string",
+        "required": true,
+        "description": "Nombre de la partida de metrado."
+      },
+      {
+        "key": "ubicacion",
+        "label": "Ubicacion / ambiente / eje",
+        "type": "string",
+        "required": false,
+        "description": "Ambiente, eje, nivel, sector o zona donde se ubica la medicion."
+      },
+      {
+        "key": "fuente",
+        "label": "Fuente / plano / capa",
+        "type": "string",
+        "required": true,
+        "description": "Plano, archivo, pagina, layout o capa de origen."
+      },
+      {
+        "key": "descripcion_elemento",
+        "label": "Descripcion del elemento",
+        "type": "string",
+        "required": true,
+        "description": "Descripcion tecnica del elemento medido."
+      },
+      {
+        "key": "numero_elementos",
+        "label": "Nro. elementos",
+        "type": "number",
+        "required": false,
+        "default": 1,
+        "description": "Cantidad de elementos iguales considerados en la fila."
+      },
+      {
+        "key": "largo",
+        "label": "Largo",
+        "type": "number",
+        "required": false,
+        "unit": "m",
+        "description": "Longitud usada para el calculo."
+      },
+      {
+        "key": "ancho",
+        "label": "Ancho",
+        "type": "number",
+        "required": false,
+        "unit": "m",
+        "description": "Ancho usado para el calculo."
+      },
+      {
+        "key": "alto_espesor",
+        "label": "Alto / espesor",
+        "type": "number",
+        "required": false,
+        "unit": "m",
+        "description": "Altura, profundidad o espesor usado para el calculo."
+      },
+      {
+        "key": "area",
+        "label": "Area",
+        "type": "number",
+        "required": false,
+        "unit": "m2",
+        "description": "Area calculada o detectada."
+      },
+      {
+        "key": "volumen",
+        "label": "Volumen",
+        "type": "number",
+        "required": false,
+        "unit": "m3",
+        "description": "Volumen calculado o detectado."
+      },
+      {
+        "key": "peso",
+        "label": "Peso",
+        "type": "number",
+        "required": false,
+        "unit": "kg",
+        "description": "Peso calculado cuando aplique, por ejemplo acero."
+      },
+      {
+        "key": "formula",
+        "label": "Formula",
+        "type": "string",
+        "required": false,
+        "description": "Formula usada para obtener el parcial."
+      },
+      {
+        "key": "parcial",
+        "label": "Parcial",
+        "type": "number",
+        "required": true,
+        "description": "Cantidad parcial resultante de la fila."
+      },
+      {
+        "key": "unidad",
+        "label": "Unidad",
+        "type": "string",
+        "required": true,
+        "allowed_values_ref": "units_allowed",
+        "description": "Unidad de metrado de la partida."
+      },
+      {
+        "key": "observaciones",
+        "label": "Observaciones",
+        "type": "string",
+        "required": false,
+        "description": "Notas, supuestos o advertencias."
+      },
+      {
+        "key": "confianza",
+        "label": "Confianza",
+        "type": "number",
+        "required": false,
+        "min": 0,
+        "max": 1,
+        "description": "Nivel de confianza de la medicion automatica."
+      }
+    ]
+  },
+  "summary_sheet": {
+    "sheet_name": "Resumen de metrados",
+    "purpose": "Agrupar los parciales por especialidad, codigo de partida, partida y unidad.",
+    "group_by": ["especialidad", "codigo_partida", "partida", "unidad"],
+    "aggregate": {
+      "cantidad_total": {
+        "source_column": "parcial",
+        "operation": "sum"
+      },
+      "confianza_promedio": {
+        "source_column": "confianza",
+        "operation": "average"
+      }
+    },
+    "columns": [
+      {
+        "key": "item",
+        "label": "Item",
+        "type": "integer",
+        "required": true
+      },
+      {
+        "key": "especialidad",
+        "label": "Especialidad",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "codigo_partida",
+        "label": "Codigo de partida",
+        "type": "string",
+        "required": false
+      },
+      {
+        "key": "partida",
+        "label": "Partida",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "unidad",
+        "label": "Unidad",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "cantidad_total",
+        "label": "Cantidad total",
+        "type": "number",
+        "required": true
+      },
+      {
+        "key": "fuentes",
+        "label": "Fuentes",
+        "type": "string",
+        "required": false
+      },
+      {
+        "key": "observaciones",
+        "label": "Observaciones",
+        "type": "string",
+        "required": false
+      },
+      {
+        "key": "confianza_promedio",
+        "label": "Confianza promedio",
+        "type": "number",
+        "required": false,
+        "min": 0,
+        "max": 1
+      }
+    ]
+  },
+  "calculation_guidelines": [
+    {
+      "unit": "m",
+      "typical_formula": "numero_elementos * largo",
+      "use_for": "Elementos lineales como zocalos, tuberias, juntas, perimetros o trazos."
+    },
+    {
+      "unit": "m2",
+      "typical_formula": "numero_elementos * largo * ancho",
+      "use_for": "Pisos, muros, tarrajeos, encofrados, cielorrasos y superficies."
+    },
+    {
+      "unit": "m3",
+      "typical_formula": "numero_elementos * largo * ancho * alto_espesor",
+      "use_for": "Concreto, excavaciones, rellenos y volumenes."
+    },
+    {
+      "unit": "kg",
+      "typical_formula": "longitud_total * peso_unitario",
+      "use_for": "Acero u otros elementos medidos por peso."
+    },
+    {
+      "unit": "und",
+      "typical_formula": "numero_elementos",
+      "use_for": "Piezas, aparatos, accesorios, puertas, ventanas o unidades contables."
+    }
+  ]
+}
