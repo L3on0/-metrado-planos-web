@@ -6,6 +6,7 @@ Esta carpeta define formatos base para generar tablas de metrados de manera cons
 
 - `metrado_schema.json`: esquema oficial inicial para la hoja de sustento y la hoja resumen.
 - `metrado_templates.json`: plantillas especificas por tipo de metrado y especialidad.
+- `specialty_mapping.json`: mapa de clasificacion por especialidad, grupo normativo, palabras clave, plantilla aplicable y unidad por defecto.
 
 ## Criterio de uso
 
@@ -33,6 +34,16 @@ Las referencias indican que el metrado cambia segun el area o tipo de partida. P
 - Instalaciones electricas y mecanicas.
 
 La aplicacion debe elegir la plantilla segun la partida detectada o seleccionada por el usuario. Si no puede clasificarla, debe usar `metrado_general`.
+
+## Clasificacion por especialidad
+
+La clasificacion debe seguir este orden:
+
+1. Especialidad: por ejemplo `estructuras`, `arquitectura`, `instalaciones_sanitarias`.
+2. Grupo normativo: por ejemplo `OE.2`, `OE.3`, `OE.4`.
+3. Palabras clave de partida: por ejemplo `concreto armado`, `encofrado`, `acero`, `tarrajeo`.
+4. Plantilla aplicable: por ejemplo `concreto_armado`, `encofrado`, `acero_fierro`.
+5. Unidad por defecto: por ejemplo `m3`, `m2`, `kg`, `und`.
 
 ## Columnas clave
 

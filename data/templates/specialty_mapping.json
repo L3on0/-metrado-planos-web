@@ -1,0 +1,279 @@
+{
+  "schema_name": "mapeo_especialidades_metrado",
+  "version": "1.0.0",
+  "description": "Mapa para clasificar metrados por especialidad, grupo normativo, palabras clave y plantilla aplicable.",
+  "classification_order": [
+    "especialidad",
+    "normative_group",
+    "partida_keywords",
+    "template_id",
+    "default_unit"
+  ],
+  "fallback": {
+    "especialidad": "otros",
+    "normative_group": null,
+    "template_id": "metrado_general",
+    "default_unit": "und"
+  },
+  "specialties": [
+    {
+      "especialidad": "obras_provisionales_trabajos_preliminares_seguridad_salud",
+      "label": "Obras provisionales, trabajos preliminares, seguridad y salud",
+      "normative_group": "OE.1",
+      "default_template_id": "metrado_general",
+      "default_unit": "glb",
+      "keywords": [
+        "obras provisionales",
+        "trabajos preliminares",
+        "seguridad",
+        "salud",
+        "campamento",
+        "cartel",
+        "limpieza",
+        "trazo",
+        "replanteo"
+      ],
+      "partida_mappings": [
+        {
+          "match_keywords": ["limpieza", "terreno"],
+          "template_id": "metrado_general",
+          "default_unit": "m2"
+        },
+        {
+          "match_keywords": ["trazo", "replanteo", "nivelacion"],
+          "template_id": "metrado_general",
+          "default_unit": "m2"
+        }
+      ]
+    },
+    {
+      "especialidad": "estructuras",
+      "label": "Estructuras",
+      "normative_group": "OE.2",
+      "default_template_id": "metrado_general",
+      "default_unit": "und",
+      "keywords": [
+        "estructura",
+        "estructuras",
+        "cimentacion",
+        "zapatas",
+        "columnas",
+        "vigas",
+        "losa",
+        "placa",
+        "escalera",
+        "concreto",
+        "encofrado",
+        "acero",
+        "fierro"
+      ],
+      "partida_mappings": [
+        {
+          "normative_group": "OE.2.1",
+          "label": "Movimiento de tierras",
+          "match_keywords": ["movimiento de tierras", "excavacion", "excavaciones", "corte", "relleno", "eliminacion", "material excedente", "nivelacion"],
+          "template_id": "movimiento_tierras",
+          "default_unit": "m3"
+        },
+        {
+          "normative_group": "OE.2.2",
+          "label": "Concreto simple",
+          "match_keywords": ["concreto simple", "cimiento corrido", "sub zapata", "falsa zapata", "solado", "sobrecimiento", "falso piso"],
+          "template_id": "concreto_simple",
+          "default_unit": "m3"
+        },
+        {
+          "normative_group": "OE.2.3",
+          "label": "Concreto armado",
+          "match_keywords": ["concreto armado", "zapata", "columna", "viga", "losa", "placa", "muro de contencion", "escalera", "cisterna", "tanque"],
+          "template_id": "concreto_armado",
+          "default_unit": "m3"
+        },
+        {
+          "match_keywords": ["encofrado", "desencofrado"],
+          "template_id": "encofrado",
+          "default_unit": "m2"
+        },
+        {
+          "match_keywords": ["acero", "fierro", "armadura", "refuerzo", "varilla", "barra"],
+          "template_id": "acero_fierro",
+          "default_unit": "kg"
+        }
+      ]
+    },
+    {
+      "especialidad": "arquitectura",
+      "label": "Arquitectura",
+      "normative_group": "OE.3",
+      "default_template_id": "metrado_general",
+      "default_unit": "m2",
+      "keywords": [
+        "arquitectura",
+        "muro",
+        "tabique",
+        "piso",
+        "pavimento",
+        "acabado",
+        "tarrajeo",
+        "pintura",
+        "zocalo",
+        "contrazocalo",
+        "revestimiento",
+        "cielorraso",
+        "puerta",
+        "ventana"
+      ],
+      "partida_mappings": [
+        {
+          "label": "Albanileria, muros y tabiques",
+          "match_keywords": ["albanileria", "muro", "muros", "tabique", "tabiques", "ladrillo"],
+          "template_id": "albanileria_muros",
+          "default_unit": "m2"
+        },
+        {
+          "label": "Pisos y pavimentos",
+          "match_keywords": ["piso", "pisos", "pavimento", "pavimentos", "contrapiso", "falso piso", "vereda"],
+          "template_id": "pisos_pavimentos",
+          "default_unit": "m2"
+        },
+        {
+          "label": "Acabados",
+          "match_keywords": ["acabado", "acabados", "tarrajeo", "pintura", "revestimiento", "cielorraso", "zocalo", "contrazocalo", "enchape"],
+          "template_id": "acabados",
+          "default_unit": "m2"
+        },
+        {
+          "label": "Carpinteria y vanos",
+          "match_keywords": ["puerta", "puertas", "ventana", "ventanas", "mampara", "baranda"],
+          "template_id": "metrado_general",
+          "default_unit": "und"
+        }
+      ]
+    },
+    {
+      "especialidad": "instalaciones_sanitarias",
+      "label": "Instalaciones sanitarias",
+      "normative_group": "OE.4",
+      "default_template_id": "instalaciones_sanitarias",
+      "default_unit": "m",
+      "keywords": [
+        "instalaciones sanitarias",
+        "sanitaria",
+        "agua fria",
+        "agua caliente",
+        "desague",
+        "ventilacion",
+        "tuberia",
+        "aparato sanitario",
+        "accesorio sanitario",
+        "registro",
+        "sumidero"
+      ],
+      "partida_mappings": [
+        {
+          "match_keywords": ["tuberia", "red", "agua fria", "agua caliente", "desague", "ventilacion"],
+          "template_id": "instalaciones_sanitarias",
+          "default_unit": "m"
+        },
+        {
+          "match_keywords": ["aparato sanitario", "inodoro", "lavatorio", "urinario", "ducha", "sumidero", "registro", "accesorio"],
+          "template_id": "instalaciones_sanitarias",
+          "default_unit": "und"
+        }
+      ]
+    },
+    {
+      "especialidad": "instalaciones_electricas_mecanicas",
+      "label": "Instalaciones electricas y mecanicas",
+      "normative_group": "OE.5",
+      "default_template_id": "instalaciones_electricas",
+      "default_unit": "und",
+      "keywords": [
+        "instalaciones electricas",
+        "electricas",
+        "mecanicas",
+        "canalizacion",
+        "ducto",
+        "conductor",
+        "cable",
+        "tomacorriente",
+        "interruptor",
+        "luminaria",
+        "tablero",
+        "circuito"
+      ],
+      "partida_mappings": [
+        {
+          "match_keywords": ["canalizacion", "ducto", "tuberia electrica", "conduit", "bandeja"],
+          "template_id": "instalaciones_electricas",
+          "default_unit": "m"
+        },
+        {
+          "match_keywords": ["conductor", "cable", "alimentador"],
+          "template_id": "instalaciones_electricas",
+          "default_unit": "m"
+        },
+        {
+          "match_keywords": ["tomacorriente", "interruptor", "luminaria", "tablero", "salida", "punto"],
+          "template_id": "instalaciones_electricas",
+          "default_unit": "und"
+        }
+      ]
+    },
+    {
+      "especialidad": "instalaciones_comunicaciones",
+      "label": "Instalaciones de comunicaciones",
+      "normative_group": "OE.6",
+      "default_template_id": "instalaciones_electricas",
+      "default_unit": "und",
+      "keywords": [
+        "comunicaciones",
+        "data",
+        "voz",
+        "internet",
+        "telefono",
+        "tv",
+        "cctv",
+        "alarma"
+      ],
+      "partida_mappings": [
+        {
+          "match_keywords": ["cable", "ducto", "canalizacion"],
+          "template_id": "instalaciones_electricas",
+          "default_unit": "m"
+        },
+        {
+          "match_keywords": ["punto", "salida", "toma", "camara", "sensor"],
+          "template_id": "instalaciones_electricas",
+          "default_unit": "und"
+        }
+      ]
+    },
+    {
+      "especialidad": "instalaciones_gas",
+      "label": "Instalaciones de gas",
+      "normative_group": "OE.7",
+      "default_template_id": "instalaciones_sanitarias",
+      "default_unit": "m",
+      "keywords": [
+        "gas",
+        "instalaciones de gas",
+        "tuberia de gas",
+        "valvula",
+        "medidor"
+      ],
+      "partida_mappings": [
+        {
+          "match_keywords": ["tuberia", "red", "linea"],
+          "template_id": "instalaciones_sanitarias",
+          "default_unit": "m"
+        },
+        {
+          "match_keywords": ["valvula", "medidor", "regulador", "punto"],
+          "template_id": "instalaciones_sanitarias",
+          "default_unit": "und"
+        }
+      ]
+    }
+  ]
+}
