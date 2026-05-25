@@ -8,6 +8,11 @@ Esta carpeta define formatos base para generar tablas de metrados de manera cons
 - `metrado_templates.json`: plantillas especificas por tipo de metrado y especialidad.
 - `specialty_mapping.json`: mapa de clasificacion por especialidad, grupo normativo, palabras clave, plantilla aplicable y unidad por defecto.
 - `capeco_metrado_formats.json`: formatos de presentacion alineados a CAPECO para metrado general, concreto armado, fierro y revision parametrica.
+- `excel/capeco_metrado_templates.xlsx`: libro Excel con formatos visuales CAPECO, bordes, anchos, celdas combinadas y formulas.
+
+## Scripts
+
+- `scripts/create_capeco_excel_templates.py`: genera nuevamente `excel/capeco_metrado_templates.xlsx` con formato consistente.
 
 ## Criterio de uso
 
