@@ -5,6 +5,7 @@ Esta carpeta define formatos base para generar tablas de metrados de manera cons
 ## Archivos
 
 - `metrado_schema.json`: esquema oficial inicial para la hoja de sustento y la hoja resumen.
+- `metrado_templates.json`: plantillas especificas por tipo de metrado y especialidad.
 
 ## Criterio de uso
 
@@ -14,6 +15,24 @@ La aplicacion debe producir dos salidas:
 2. `Resumen de metrados`: agrupacion final por especialidad, codigo de partida, partida y unidad.
 
 El formato no debe improvisarse en cada ejecucion. La app puede dejar campos vacios cuando no tenga informacion suficiente, pero debe mantener las mismas columnas para facilitar revision, comparacion y exportacion a presupuesto.
+
+## Plantillas especificas
+
+Las referencias indican que el metrado cambia segun el area o tipo de partida. Por eso `metrado_templates.json` incluye formatos para:
+
+- Metrado general.
+- Movimiento de tierras.
+- Concreto simple.
+- Concreto armado.
+- Encofrado y desencofrado.
+- Acero / fierro.
+- Albanileria / muros y tabiques.
+- Acabados.
+- Pisos y pavimentos.
+- Instalaciones sanitarias.
+- Instalaciones electricas y mecanicas.
+
+La aplicacion debe elegir la plantilla segun la partida detectada o seleccionada por el usuario. Si no puede clasificarla, debe usar `metrado_general`.
 
 ## Columnas clave
 

@@ -1,0 +1,434 @@
+{
+  "schema_name": "plantillas_especificas_metrado",
+  "version": "1.0.0",
+  "description": "Plantillas de metrados por especialidad y tipo de partida, basadas en referencias de norma de metrados y CAPECO.",
+  "common_columns": [
+    "item",
+    "especialidad",
+    "codigo_partida",
+    "partida",
+    "ubicacion",
+    "fuente",
+    "descripcion_elemento",
+    "unidad",
+    "parcial",
+    "observaciones",
+    "confianza"
+  ],
+  "templates": [
+    {
+      "template_id": "metrado_general",
+      "name": "Metrado general",
+      "applies_to": ["partidas comunes", "elementos lineales", "elementos por unidad"],
+      "default_unit": "und",
+      "summary_group_by": ["especialidad", "codigo_partida", "partida", "unidad"],
+      "columns": [
+        "item",
+        "especialidad",
+        "codigo_partida",
+        "partida",
+        "ubicacion",
+        "fuente",
+        "descripcion_elemento",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "alto_espesor",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "und",
+          "formula": "numero_elementos"
+        },
+        {
+          "unit": "m",
+          "formula": "numero_elementos * largo"
+        },
+        {
+          "unit": "m2",
+          "formula": "numero_elementos * largo * ancho"
+        },
+        {
+          "unit": "m3",
+          "formula": "numero_elementos * largo * ancho * alto_espesor"
+        }
+      ]
+    },
+    {
+      "template_id": "movimiento_tierras",
+      "name": "Movimiento de tierras",
+      "normative_group": "OE.2.1",
+      "applies_to": ["nivelacion", "excavaciones", "cortes", "rellenos", "eliminacion de material excedente"],
+      "default_unit": "m3",
+      "summary_group_by": ["codigo_partida", "partida", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "sector",
+        "eje_o_tramo",
+        "fuente",
+        "descripcion_elemento",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "profundidad_promedio",
+        "area",
+        "volumen",
+        "factor_esponjamiento",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m2",
+          "formula": "largo * ancho"
+        },
+        {
+          "unit": "m3",
+          "formula": "numero_elementos * largo * ancho * profundidad_promedio * factor_esponjamiento"
+        }
+      ]
+    },
+    {
+      "template_id": "concreto_simple",
+      "name": "Concreto simple",
+      "normative_group": "OE.2.2",
+      "applies_to": ["cimientos corridos", "sub zapatas", "solados", "bases", "sobrecimientos", "falso piso"],
+      "default_unit": "m3",
+      "summary_group_by": ["codigo_partida", "partida", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "ubicacion",
+        "fuente",
+        "descripcion_elemento",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "alto_espesor",
+        "volumen",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m3",
+          "formula": "numero_elementos * largo * ancho * alto_espesor"
+        }
+      ]
+    },
+    {
+      "template_id": "concreto_armado",
+      "name": "Concreto armado",
+      "normative_group": "OE.2.3",
+      "applies_to": ["cimientos reforzados", "zapatas", "columnas", "vigas", "losas", "placas", "escaleras"],
+      "subtemplates": ["concreto_armado_concreto", "concreto_armado_encofrado", "concreto_armado_acero"],
+      "default_unit": "m3",
+      "summary_group_by": ["codigo_partida", "partida", "componente", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "componente",
+        "elemento_estructural",
+        "ubicacion",
+        "fuente",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "alto_espesor",
+        "area",
+        "volumen",
+        "peso",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "component": "concreto",
+          "unit": "m3",
+          "formula": "numero_elementos * largo * ancho * alto_espesor"
+        },
+        {
+          "component": "encofrado",
+          "unit": "m2",
+          "formula": "numero_elementos * area"
+        },
+        {
+          "component": "acero",
+          "unit": "kg",
+          "formula": "longitud_total * peso_unitario_kg_m"
+        }
+      ]
+    },
+    {
+      "template_id": "encofrado",
+      "name": "Encofrado y desencofrado",
+      "normative_hint": "Se mide usualmente por area de contacto en m2.",
+      "applies_to": ["zapatas", "sobrecimientos", "columnas", "vigas", "losas", "muros", "cisternas", "escaleras"],
+      "default_unit": "m2",
+      "summary_group_by": ["codigo_partida", "partida", "tipo_cara", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "elemento_estructural",
+        "ubicacion",
+        "fuente",
+        "tipo_cara",
+        "numero_elementos",
+        "largo",
+        "alto",
+        "ancho",
+        "numero_caras",
+        "area_contacto",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m2",
+          "formula": "numero_elementos * largo * alto * numero_caras"
+        }
+      ]
+    },
+    {
+      "template_id": "acero_fierro",
+      "name": "Acero / fierro",
+      "normative_hint": "CAPECO presenta formato diferenciado para metrado de fierro, con longitud total y peso kg/ml.",
+      "applies_to": ["armadura de acero", "fierro corrugado", "refuerzo"],
+      "default_unit": "kg",
+      "summary_group_by": ["codigo_partida", "partida", "diametro", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "elemento_estructural",
+        "ubicacion",
+        "fuente",
+        "diseno_fierro",
+        "diametro",
+        "cantidad_barras",
+        "longitud_unitaria",
+        "longitud_total",
+        "peso_unitario_kg_m",
+        "peso",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "kg",
+          "formula": "cantidad_barras * longitud_unitaria * peso_unitario_kg_m"
+        }
+      ],
+      "reference_weight_table_required": true
+    },
+    {
+      "template_id": "albanileria_muros",
+      "name": "Albanileria / muros y tabiques",
+      "applies_to": ["muros de soga", "muros de cabeza", "tabiques", "muros de ladrillo"],
+      "default_unit": "m2",
+      "summary_group_by": ["codigo_partida", "partida", "tipo_muro", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "ambiente",
+        "eje_o_tramo",
+        "fuente",
+        "tipo_muro",
+        "numero_elementos",
+        "largo",
+        "alto",
+        "area_bruta",
+        "area_vanos",
+        "area_neta",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m2",
+          "formula": "numero_elementos * (largo * alto - area_vanos)"
+        }
+      ]
+    },
+    {
+      "template_id": "acabados",
+      "name": "Acabados",
+      "normative_hint": "CAPECO referencia hojas resumen de metrados de acabados.",
+      "applies_to": ["tarrajeos", "pinturas", "revestimientos", "cielorrasos", "zocalos", "contrazocalos"],
+      "default_unit": "m2",
+      "summary_group_by": ["codigo_partida", "partida", "ambiente", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "ambiente",
+        "nivel",
+        "fuente",
+        "superficie",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "alto",
+        "area_bruta",
+        "deducciones",
+        "area_neta",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m2",
+          "formula": "area_bruta - deducciones"
+        },
+        {
+          "unit": "m",
+          "formula": "numero_elementos * largo"
+        }
+      ]
+    },
+    {
+      "template_id": "pisos_pavimentos",
+      "name": "Pisos y pavimentos",
+      "applies_to": ["pisos", "contrapisos", "falsos pisos", "veredas", "pavimentos"],
+      "default_unit": "m2",
+      "summary_group_by": ["codigo_partida", "partida", "ambiente", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "ambiente",
+        "nivel",
+        "fuente",
+        "tipo_piso",
+        "numero_elementos",
+        "largo",
+        "ancho",
+        "espesor",
+        "area",
+        "volumen",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m2",
+          "formula": "numero_elementos * largo * ancho"
+        },
+        {
+          "unit": "m3",
+          "formula": "numero_elementos * largo * ancho * espesor"
+        }
+      ]
+    },
+    {
+      "template_id": "instalaciones_sanitarias",
+      "name": "Instalaciones sanitarias",
+      "normative_group": "OE.4",
+      "applies_to": ["agua fria", "agua caliente", "desague", "ventilacion", "aparatos sanitarios", "accesorios"],
+      "default_unit": "m",
+      "summary_group_by": ["codigo_partida", "partida", "diametro", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "sistema",
+        "nivel",
+        "ambiente",
+        "fuente",
+        "diametro",
+        "material",
+        "numero_tramos",
+        "longitud_tramo",
+        "longitud_total",
+        "cantidad_unidades",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m",
+          "formula": "numero_tramos * longitud_tramo"
+        },
+        {
+          "unit": "und",
+          "formula": "cantidad_unidades"
+        }
+      ]
+    },
+    {
+      "template_id": "instalaciones_electricas",
+      "name": "Instalaciones electricas y mecanicas",
+      "normative_group": "OE.5",
+      "applies_to": ["ductos", "canalizaciones", "conductores", "tomacorrientes", "interruptores", "luminarias", "tableros"],
+      "default_unit": "und",
+      "summary_group_by": ["codigo_partida", "partida", "circuito", "unidad"],
+      "columns": [
+        "item",
+        "codigo_partida",
+        "partida",
+        "sistema",
+        "circuito",
+        "nivel",
+        "ambiente",
+        "fuente",
+        "diametro_o_seccion",
+        "numero_tramos",
+        "longitud_tramo",
+        "longitud_total",
+        "cantidad_unidades",
+        "formula",
+        "parcial",
+        "unidad",
+        "observaciones",
+        "confianza"
+      ],
+      "calculation_rules": [
+        {
+          "unit": "m",
+          "formula": "numero_tramos * longitud_tramo"
+        },
+        {
+          "unit": "und",
+          "formula": "cantidad_unidades"
+        }
+      ]
+    }
+  ]
+}
