@@ -1,0 +1,414 @@
+{
+  "source_file": "Manual LECTURA DE PLANOS Y METRADOS.pdf",
+  "page_count": 68,
+  "pages": [
+    {
+      "page_number": 1,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "CENTRO DE CAPACITACION \nVELSA GROUP\nLECTURA DE PLANOS Y METRADOS\nMANUAL\n"
+    },
+    {
+      "page_number": 2,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "LECTURA DE PLANOS \nINDICE\nCapítulo\n \n    \n          \n \n         \n \n         \n \n         \n \n Tema\n \n         \n \n         \n \n         \n \n         \n \n         \n \n Página\n \n \n1.\nPRESENTACIÓN\n \n6\n2.\nUNIDADES DEL SISTEMA INTERNACIONAL\n8\n3.\nESCALAS APLICADAS EN CONSTRUCCIÓN CIVIL\n12\n3.1.\nLa escala\n12\n3.2.\nEscalímetro\n13\n4.\nPLANOS DE VISION\n14\n4.1.\nLíneas de Visión\n14\n4.2.\nPlanos de Visión\n15\n4.3.\nPrincipales planos de visión en Arquitectura\n16\n4.4.\nMedidas de los planos\n22\n4.5.\nPlanos exigidos para un proyecto arquitectónico\n23\n4.6.\nProyectos\n25\n5. SIMBOLOGIA DEL DIBUJO ARQUITECTÓNICO\n26\n5.1.\nSimbología del Dibujo Arquitectónico\n26\n5.2.\nRepresentación de líneas\n        26\n5.3.\nRepresentación de vanos y aberturas\n        29\n5.4.\nRepresentación de escaleras y rampas en planta\n        35\n5.5.\nRepresentación de muebles\n37\n5.6.\nCuadro de acabados\n38\n5.7.\nSimbología de ubicación en planta de cortes, elevaciones y \nDetalles\n39\n5.8.\nSimbología de niveles de piso\n39\n5.9.\nOtros símbolos arquitectónicos\n40\n5.10\nRótulos\n40\n6. PLANOS DEL PROYECTO DE ESTRUCTURAS\n42\n6.1.\nPlano de cimientos\n42\n6.2.\nFormas de representación del suelo\n44\n6.3.\nCurvaturas del fierro – estribos\n45\n6.4.\nFierro en columnas y escaleras\n45\n7. PLANOS DEL PROYECTO SANITARIO\n48\n2\n"
+    },
+    {
+      "page_number": 3,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "7.1.\nAlgunas definiciones sobre proyectos sanitarios\n48\n7.2.\nSimbología utilizada en los planos sanitarios\n51\n7.3.\nNomenclatura Internacional\n55\n8. PLANO DE LAS INSTALACIONES ELECTRICAS\n63\n8.1.\nConceptos básicos sobre instalaciones eléctricas\n63\n8.2.\nSimbología del dibujo de planos de instalaciones eléctricas\n64\n3\n"
+    },
+    {
+      "page_number": 4,
+      "width": 595.0,
+      "height": 842.0,
+      "text": " LECTURA DE PLANOS DE CONSTRUCCION CIVIL\n1.\nPRESENTACIÓN\nEl Manual  de Lectura de Planos de Construcción Civil ha sido elaborado \ntomando en cuenta las necesidades del Maestro de Obras de Construcción \nCivil, en la interpretación del proyecto de construcción a partir de los planos \nde diseño; la preparación de la Proforma de Construcción y el proceso de \nedificación. Resume los criterios técnicos básicos para trasladar un plano de \nconstrucción  al  terreno  y  la  interpretación  de  los  distintos  detalles \nconstructivos  diseñados  en  los  planos  preparados  por  el  arquitecto  y  el \ningeniero civil, de acuerdo a los reglamentos vigentes de construcción.\nEn los diferentes capítulos del Manual se presentan los conceptos básicos a \nconsiderar en la elaboración de proyectos de construcción civil, desde los tipos \nde visiones, hasta la nomenclatura utilizada en la región. Todos los temas \ntratados presentan planos sencillos de un proyecto real, principalmente de \ncasa habitación, para poder visualizar el tratamiento dado a cada tópico.\nCONCEPTOS BASICOS\nPLANOS.- son representaciones graficas de una futura obra, añadiendo \nelementos que permiten su visualización.\nSIMBOLO.- es una clase de signo, que tiene un poder de expresión, el cual \nrepresenta a algo determinado.\nMETRADO.-son mediciones que se realiza en el campo de la construcción \ncivil.\n4\n"
+    },
+    {
+      "page_number": 5,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "2.\nUNIDADES DEL SISTEMA\n \n  \nINTERNACIONAL DE MEDIDAS\nLa Comunidad Andina de Naciones (CAN) ha adoptado el Sistema \nInternacional  de  Medidas:  Sistema  MKS (metro,  kilogramo, \nsegundo), el cual determina un conjunto básico de medidas y otro \nconjunto derivado, que deben ser usadas en todas las actividades \ntécnicas. Por esta razón es importante conocer la metrología que \nes usada comúnmente en nuestros países.\nA  continuación  se  presenta  el  Cuadro  Nº  1  que  muestra  las \nprincipales medidas usadas, su simbología y sus abreviaciones.  \nTABLA Nº 1\nUNIDADES BÁSICAS DEL SISTEMA INTERNACIONAL DE \nMEDIDAS\nObjeto de medida\nUnidad básica\nSímbolo\nLongitud\nMetro\nm\nMasa\nKilogramo\nkg\nTiempo\nSegundo\ns\nIntensidad de corriente \neléctrica\nAmperio\nA\nTemperatura \ntermodinámica1\nGrado Kelvin\nºK\nCantidad de sustancia\nMol\nmol\nIntensidad luminosa\nCandela\ncd\n1 La Temperatura Termodinámica está definida por el Grado Kelvin, cuyo grado cero \ncorresponde al Cero absoluto = -273º Celsius\n5\n"
+    },
+    {
+      "page_number": 6,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "En la Tabla Nº 2 se presentan las unidades derivadas del Sistema \nInternacional  de  Medidas,  es  decir  las  medidas  de  superficie, \nvolumen,  aceleración,  densidad,  etc.  que  complementan  el \nSistema.\nTABLA Nº 2\nUNIDADES DERIVADAS DEL SISTEMA INTERNACIONAL DE \nMEDIDAS\nObjeto de Medida\nUnidad  derivada\nSímbolo\nSuperficie\nmetro cuadrado\nm2\nVolumen\nmetro cúbico\nm3\nVelocidad\nmetro por segundo\nm/s\nAceleración\nmetro por segundo \nal cuadrado\nm/s2\nDensidad\nkilogramo por \nmetro cúbico\nkg/m3\nDensidad de corriente amperio por metro \ncuadrado\nA/m2\nFuerza de campo \nmagnético\namperio por metro\nA/m\nVolumen específico\nmetro cúbico por \nkilogramo\nm3/kg\nLuminancia\ncandela por metro \ncuadrado\ncd/m2\nLa Tabla Nº 3 presentada a continuación,  define otras unidades de \nmedida más especializadas como los ángulos, unidades de la Física \ncomo: fuerza, presión, potencia, flujo magnético, etc.\n6\n"
+    },
+    {
+      "page_number": 7,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "TABLA Nº 3\nOTRAS UNIDADES DERIVADAS DEL SISTEMA \nINTERNACIONAL DE MEDIDAS\nObjeto de Medida\nUnidad\nSímbolo (1) Expresión (2)\nÁngulo plano\nRadián\nRad\nm·m-1 = 1\nÁngulo sólido\nEstereorradián\nSr\nm2·m-2 = 1\nFrecuencia\nHercio\nHz\n1/s\nFuerza\nNewton\nN\nkg·m/s2\nPresión, tensión mecánica\nPascal\nPa\nN/m2\nEnergía, trabajo, cantidad de \ncalor\nJulio\nJ\nN·m\nPotencia\nVatio\nW\nJ/s\nCantidad de electricidad\nCulombio\nC\nA·s\nPotencial eléctrico, diferencia \nde potencial, tensión \neléctrica y fuerza \nelectromotriz\nVoltio\nV\nJ/C\nCapacidad eléctrica\nFaradio\nF\nC/V\nResistencia eléctrica\nOhmio\nΩ\nV/A\nConductancia eléctrica\nSiemens\nS\n1/Ω\nFlujo magnético, flujo de \ninducción magnética\nWeber\nWb\nV·s\nDensidad de flujo magnético, \ninducción magnética\nTesla\nT\nWb/m2\nInductancia\nHenrio\nH\nWb/A\nTemperatura Celsius\ngrado Celsius\nºC\n1 ºC = 274º K\nFlujo luminoso\nLumen\nLm\ncd·sr\nIluminancia\nLux\nLx\nlm/m2\nActividad (radiaciones \nionizantes)\nBecquerel\nBq\n1/s\nDosis absorbida\nGray\nGy\nJ/kg\nDosis equivalente\nSievert\nSv\nJ/kg\n(1)  Nombre especial de la unidad derivada\n(2) Expresión en función de unidades básicas o en función de otras \nunidades  derivadas\n7\n"
+    },
+    {
+      "page_number": 8,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "En la Tabla Nº 4 se  presentan los prefijos decimales aceptados en \nel Sistema Internacional de Medidas.\nTABLA Nº 4\nPREFIJOS DECIMALES DEL SISTEMA INTERNACIONAL DE \nMEDIDAS\nPREFIJO\nSÍMBOLO\nAUMENTO O DISMINUCIÓN DE LA \nUNIDAD\n exa\nE\n1.000.000.000.000.000.000 (un trillón)\npeta\nP\n1.000.000.000.000.000 (mil billones)\ntera\nT\n1.000.000.000.000 (un billón)\ngiga\nG\n1.000.000.000 (mil millones, un millardo)\nmega\nM\n1.000.000 (un millón)\nkilo\nk\n1.000 (un millar, mil)\nhecto\nh\n100 (un centenar, cien)\ndeca\nda\n10 (una decena, diez)\ndeci\nd\n0,1 (un décimo)\ncenti\nc\n0,01 (un centésimo)\nmili\nm\n0,001 (un milésimo)\nmicro\nµ\n0,000001 (un millonésimo)\nnano\nn\n0,000000001 (un milmillonésimo)\npico\np\n0,000000000001 (un billonésimo)\nfemto\nf\n0,000000000000001 (un milbillonésimo)\natto\na\n0,000000000000000001 (un trillonésimo)\nEstos prefijos pueden agregarse a la mayoría de las unidades \nmétricas  para  aumentar  o  disminuir  su  cuantía.  Por  ejemplo,  un \nkilómetro es igual a 1.000 metros.\n8\n"
+    },
+    {
+      "page_number": 9,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "9\n"
+    },
+    {
+      "page_number": 10,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "3.  ESCALAS APLICADAS EN CONSTRUCCIÓN CIVIL\nPara que el proyectista pueda representar su diseño en un papel, \ndeberá hacerlo mucho más pequeño que el tamaño natural, es \ndecir como si se encogiera. Estos planos estarán reducidos en una \nproporción que permita trasladar sus medidas muy fácilmente al \ntamaño natural, sobre el terreno. \n3.1. La Escala\nLa escala es la proporción en la que se ha reducido el tamaño real \ndel diseño, en el plano. Señala en cuanto se reducen las medidas \nreales para dibujarlas en el plano. Las medidas del plano pequeño \nse indican de la siguiente manera:\n        ESCALA  1/N     ó  1: N\nDonde:\nN  representa en cuanto se ha reducido el plano real y se lee: \n10\nUNO EN N (También UNO es a N)\n"
+    },
+    {
+      "page_number": 11,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "EJEMPLOS:\n1.\nSe tiene un plano a escala 1:200, quiere decir que cada \ncentímetro del  plano  representa  200  cm (2  metros) \nsobre el terreno.\n2.\nUn plano a escala 1:50 representa que cada centímetro \nde dibujo corresponde a  50 centímetros (medio metro) \nsobre el terreno.\n3.\nUn plano topográfico de  escala 1:20,000 representa por \ncada centímetro, 20,000 centímetros (200 metros).\n3.2.\nEl escalímetro\nEl escalímetro es una regla triangular que presenta seis caras e \nindica directamente los tamaños sobre el terreno, según la escala \nrespectiva.  Por  ejemplo  si  medimos  en  el  plano  una  escala  de \n1:100, el escalímetro nos indica directamente que cada centímetro \ncorresponde a un metro.\nPodemos conseguir escalímetros con las escalas más usuales: \n1:20; 1:25; 1:50; 1:75; 1:100; 1:150 ;1:1000 etc.  \n11\n"
+    },
+    {
+      "page_number": 12,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "4.\nPLANOS DE VISION\nPara poder entender la forma como el proyectista representa su \ndiseño  tridimensional  en  solo  dos  dimensiones,  es  necesario \nentender como se observan los planos de visión. En los próximos \nacápites se explican los conceptos sobre las diferentes vistas que \npueden ser establecidas y su representación en dos dimensiones \nsobre un plano.\n4.1. Líneas de Visión\nLínea de visión es aquella línea recta imaginaria que va desde \nnuestros ojos a un objeto cualquiera.\nUn  objeto  puede  verse  con  infinitas  líneas  de  visión,  en \nposiciones diferentes y cada vista se verá diferente.\n12\n"
+    },
+    {
+      "page_number": 13,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "4.2.\nPlanos de visión\nUn plano de visión o lámina es una superficie donde se refleja \nun objeto con dos dimensiones principales. Un ejemplo de esto \nes una fotografía, ya que presenta un plano de visión.\nSi miramos un objeto cualquiera veremos que puede presentar \nmuchos  planos  de  visión,  según  cada  posición  que  tome  el \nobservador.\nPlanos de Visión diferentes\n13\n"
+    },
+    {
+      "page_number": 14,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "ELEVACION LATERAL\nDERECHA\nELEVACION FRONTAL\nELEVACION LATERAL\nIZQUIERDA\nELEVACION\nPOSTERIOR\nVISTA SUPERIOR\nVISTA EN PLANTA\n4.3. Principales planos de visión en Arquitectura e \ningeniería\nEn la ingeniería y en la arquitectura  se utilizan los planos de \nvisión, para indicar a los dueños y a los constructores como se \nverán los proyectos terminados. Indican también como deben \nejecutarse los trabajos, las medidas que deben respetarse y en \ngeneral las especificaciones de su construcción.\nEn la ingeniería suele aplicarse un conjunto de vistas generales \npreestablecidas,  que  permitan  tener  una  visión  mejor  del \nelemento que se diseña, dichos planos de visión se presentan a \ncontinuación:\n14\nPLANOS DE VISION  DE UN OBJETO\n"
+    },
+    {
+      "page_number": 15,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "Las vistas más características usadas en ingeniería civil son:\na. Planos  de  fachadas  y  elevaciones:  que  son  planos \nparalelos  a  las  paredes  de  la  edificación.  Un  ejemplo  se \npresenta a continuación:\n15\nELEVACIÓN POSTERIOR\nELEVACIÓN FRONTAL\n"
+    },
+    {
+      "page_number": 16,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "b. Planos de Corte\nMuchos de los detalles de un diseño pueden quedar en el interior \ny  no  pueden  ser  vistos  convenientemente  en  los  planos  de \nfachadas y elevaciones o por las vistas en planta. Los planos de \ncorte nos permiten  ver mejor los detalles  de un objeto  que \nquedan dentro  del diseño.\nLos planos de corte permiten cortar un diseño  “en tajadas” \nestas  pueden  ser  verticales  u  horizontales  (ver  Plano \nArquitectura A-02).\n           \nREPRESENTACIÓN DE UN PLANO DE CORTE VERTICAL\n16\n"
+    },
+    {
+      "page_number": 17,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "INSERTAR PLANO ARQUITECTURA A-02\n17\n"
+    },
+    {
+      "page_number": 18,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "b. Planos de Planta de una edificación\nEs un plano que corta la edificación a una altura de 1.20 m del \nnivel del piso terminado (NPT). En el diseño de un edificio se \nhará un plano de planta por cada piso que tenga la edificación. \n \nEl plano de corte se muestra en el plano de planta con una línea \npunteada (Ver Plano Arquitectura A-01), indicándose además la \ndirección  de  la  visión  y  la  letra  que  identifica  el  corte, \ngeneralmente en mayúsculas.\n"
+    },
+    {
+      "page_number": 19,
+      "width": 595.0,
+      "height": 842.0,
+      "text": " \nINSERTAR PLANO ARQUITECTURA A-01\n19\n"
+    },
+    {
+      "page_number": 20,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "4.4.\nMedidas de los planos\nEs  importante  que  los  planos  tengan  medidas  que  permitan  la \nestandarización de los muebles y/o elementos donde se archivan, \nLas normas ITINTEC2 definen la medidas de estos. A continuación \nse  presenta  la  Tabla  Nº  5:  Cuadro  de  medidas  de  planos  de \ningeniería según la norma Peruana ITINTEC, vigente:\nTABLA Nº 5\nCUADRO DE MEDIDAS DE PLANOS DE INGENIERIA SEGÚN \nNORMA PERUANA DE ITINTEC\nTAMAÑO NORMALIZADO\nMEDIDAS\nA 4\n210 X 297 mm\nA 3\n297 X 420 mm\nA 2\n420 X 594 mm\nA 1\n594 X 840 mm\nA 00\n1188 X 840 mm\n2 Las siglas ITINTEC corresponden al Instituto Técnico de Normalización y Calidad del \nPerú, cuyas funciones han sido actualmente asignadas a  INDECOPI\n20\n"
+    },
+    {
+      "page_number": 21,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "4.5. Planos exigidos para un proyecto arquitectónico\nSegún el Reglamento para el Otorgamiento de Licencias de \nConstrucción, Control y Conformidad de Obra en el Perú, \nlos planos de arquitectura, además de otros planos, que deben \npresentarse para solicitar la aprobación del anteproyecto ante la \nMunicipalidad respectiva son los siguientes:\na. Anteproyecto:\nPlano de ubicación a Escala 1:500 (Ver Modelo Plano U-01), \nindicando: \n•\nEl nombre del distrito, \n•\nÁrea  de  estructuración  urbana (caso  de  Lima  y \nCallao)\n•\nZonificación, urbanización o barrio, manzana y lote y/o \ndirección \n•\nNombres de las calles circundantes\n•\nLinderos y  medidas  perimétricas  del  lote,  área  del \nterreno\n•\ndistancia  a  la  esquina  más  cercana  señalando  norte \nmagnético\n•\nLa zona techada de un piso con achurado simple a 45º, \nla de dos pisos con achurado doble a 45º y la 3 o más \npisos con un tercer achurado horizontal, indicando altura \ny uso de los edificios colindantes\n•\nLos datos técnicos de la edificación proyectada, \ncomparados con los señalados en el Reglamento de \nZonificación, altura de la edificación y retiros\n•\nÁrea de la construcción por niveles y total, indicando \nuso de áreas libres en % y el número de \nestacionamientos dentro del lote \n•\nEsquema de localización de la manzana (escala \n1:5,000 o 1:10,000) (Ver modelo adjunto)\nPlanos  de  plantas,  elevaciones  y  cortes que  sean \nnecesarios,  a  escala  conveniente,  a  nivel  de  esquema  o \ndesarrollados y acotados.\n21\n"
+    },
+    {
+      "page_number": 22,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "INSERTAR PLANO U-01 UBICACION\n22\n"
+    },
+    {
+      "page_number": 23,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "4.6.\nProyectos\nPara  la  presentación  de  proyectos  de  construcción  a  las \nautoridades  municipales,  es  necesario  presentar  un  legajo  que \nincluya los siguientes planos:\n•\nPlano de ubicación, con las mismas características del \nanteproyecto.\n•\nPlanos acotados de plantas de cada uno de los niveles \nproyectados, con ubicación de los cortes y de los aparatos \nsanitarios, a escala 1:100 o 1:50 a juicio del proyectista.\n•\nPlanos acotados de las elevaciones, con indicación de \ncortes, a escala 1:100 o 1:50.\n•\nNo se especifica la cantidad de cortes pero en viviendas de \ntecho horizontal  generalmente basta 2 cortes.\n23\n"
+    },
+    {
+      "page_number": 24,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "5.  SIMBOLOGIA DEL DIBUJO ARQUITECTONICO\n5.1. Simbología del Dibujo Arquitectónico\nLa simbología del dibujo arquitectónico comprende el  diseño, \nrepresentación  y  especificación de  edificaciones  y  otras \nestructuras,  utilizando  en  el  plano  una\n simbología \nconvencional  universal,  que  permita   ser  interpretado  por \ncualquier persona con conocimientos sobre construcción.\n5.2. Representación de líneas\nPara el dibujo de un proyecto se utilizan diversas líneas, algunas \nvarían en el grosor según la escala del dibujo, sin embargo las \nmedidas recomendadas en milímetros para cada tipo de línea \nson:\n•\nLínea  de  contorno visible (trazo de  02 o 03mm): de \npoco espesor, utilizada para demarcar los límites o aristas \nvisibles  de:  Planta  o  Elevación,  tales  como  muebles, \nsanitarios, jardineras, pasos de escaleras, cambios de nivel, \netc.\n24\n"
+    },
+    {
+      "page_number": 25,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nLínea  de  muro  con  techo (trazo  de  06  o  08mm): \nutilizada para representar en planta muros con techo, tales \ncomo Línea de cercos de patios, de azoteas, etc.\n•\nMuro  sin  techo (trazo  de  04  o  05mm):  utilizada  para \ndemarcar habitaciones sin techo.\n•\nLínea  de  acotación  de  dimensiones (trazo  de  01  o \n02mm):  línea  fina  terminada  en  sus  extremos  con  una \nflecha, un círculo o una línea diagonal pequeña. Además se \ncoloca un número que especifica la dimensión entre ambos \nextremos.\n•\nLínea de contornos proyectados (02 o 03mm): línea de \ntrazos  interrumpidos  cortos  para  representar  contornos \nproyectados (volados, pasos de escaleras, ventanas altas) \nocultos, en una edificación.\n25\n"
+    },
+    {
+      "page_number": 26,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nLínea de ejes y centros (trazo de 01 o 02mm): línea \ndelgada  de  trazos  interrumpidos  largos  intercalados  con \npuntos, se utiliza para indicar ejes de vanos, vigas, círculos \netc.\n•\nLínea de plano de corte (trazo de 03, 04, 05mm): Línea \nde  trazos  interrumpidos  largos  intercalados  con  puntos, \npara indicar lugares donde se está realizando el corte o \nsección en plantas de distribución, fachadas o detalles.\n•\nLínea  de  rotura  corta (trazo  de  01,  02mm):  línea  de \nforma irregular dibujada a pulso para señalar que un muro \nu otro elemento está incompleto, por que no es necesario \nrepresentarlo todo.\n5.3. Representación en planta de Vanos y Aberturas\nSe  denomina  vano una  abertura  ubicada  en  un  muro.  Su \nrepresentación depende del tipo de vano y de la vista que se \nrepresenta, tal como se detalla a continuación:\n•\nPuertas: se  dibujan  abiertas  indicando  el  sentido  de \napertura.  Otras  puertas  se  representan  cerradas  o \nsemiabiertas (levadizas, corredizas, metálicas etc.).\n26\n"
+    },
+    {
+      "page_number": 27,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "V2\nP7\nM2\nDintel en arco\n        Puerta\n•\nVentanas: las ventanas bajas (hasta el alfeizar igual a la \naltura de la vista = 1.55 m) se dibujan con cuatro líneas \nparalelas  de  contorno  visible.  Las  ventanas  altas  se \nrepresentan con dos líneas paralelas de trazos cortos en la \nparte central y los bordes con líneas de muro con techo.\n                      Ventana baja\n \nVentana alta\n•\nMamparas: se denominan así a elementos de vidrios con \nmarcos que llegan al piso, cerrando un vano o separando \nun  ambiente,  con  una  o  más  puertas.  La  parte  fija  se \nrepresenta  con  dos  líneas  paralelas  continuas  delgadas \n(trazo de 02,03) y la parte que abre, de acuerdo al tipo de \npuerta.\n27\n"
+    },
+    {
+      "page_number": 28,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "Mampara\n•\nRejas: son representadas igual que las ventanas bajas\n                        \nRejas\n•\nVanos en vistas de elevaciones: se dibujan con líneas \nde espesor variable (trazo de 02 a 05) de acuerdo a la \ndistancia del observador: con línea gruesa lo más cercano. \nLas puertas, ventanas, mamparas y rejas se representan \ncerradas.\nVano en elevación\n28\n"
+    },
+    {
+      "page_number": 29,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nVanos  en  vistas  en  corte: las  puertas,  ventanas, \nmamparas y rejas se dibujan con líneas de contorno visible \n(trazo de 02 a 03mm) y se representan cerradas.\nVano \n•\nCuadro  de   vanos: se  representan  mediante  cuadro \nindividual  subdividido  en  cuatro  partes  iguales  donde se \nespecifica el tipo de vano, el material, las medidas: alto, \nancho  y  alfeizar  (altura  del  vano  en  relación  al  piso). \nIncluye los closets o placas\nCUADRO Nº 6\nCUADRO  DE VANOS\nTIPO DE \nVANO\nANCHO \n(m)\nALTO\n(m)\nALFEIZAR\n(m)\nOBSERVACIONES\nP1\nP2\n.\n.\n0.90\n1.00\n.\n.\n2.10\n2.10\n.\n.\n-\n-\n.\n.\nEntablerada de madera\nMachiembrada de madera\n.\n.\nV1\nV2\n.\n.\n1.80\n2.40\n.\n.\n1.50\n0.60\n.\n.\n0.90\n1.80\n.\n.\nMadera con vidrio\nFierro con vidrio\n.\n.\nM1\nM2\n.\n.\n3.00\n2.40\n.\n.\n2.10\n2.40\n.\n.\n-\n-\n.\n.\nAluminio con vidrio\nCristal templado\n.\n.\nCOCINA\n29\n"
+    },
+    {
+      "page_number": 30,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nRepresentación de aparatos sanitarios: (trazo de 02, \n03mm): se representan con líneas de contorno visible de \nacuerdo a su forma, utilizando en lo posible plantillas de \naparatos sanitarios.\nRepresentación de escaleras y rampas en Planta\n•\nEscaleras: Pueden presentarse tres casos:\no Inicio de la escalera\no Escalera de un piso intermedio\no Escalera final\nLos pasos se dibujan con línea continua delgada (trazo de \n02, 03mm) usualmente a la altura del séptimo paso, se \ncoloca una o dos líneas de rotura larga si es en inicio de la \nescalera  o  la  de  un  piso  intermedio.  Cuando  es  una \nescalera  que  comienza  en  el  2do  piso,  se  representa  a \npartir  del  paso  ocho  y  se  dibuja  con  trazos  cortos.  Se \nrepresenta la baranda (02,03mm) con dos líneas paralelas \nde contorno visible, se complementa con la enumeración de \npasos y una flecha llamada línea de huella.\n30\n"
+    },
+    {
+      "page_number": 31,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "2\n1\n10\n9\n8\n7\n6\n5\n4\n3\n13\n12\n11\n14\nEscalera primer piso\n31\n"
+    },
+    {
+      "page_number": 32,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "Rampa    S=2%\nEscalera segundo piso\n•\nRampas: también se presentan tres casos: \no Inicio de la rampa\no Rampa de un piso intermedio\no Final de rampa\n2\n1\n10\n9\n8\n7\n6\n5\n4\n3\n11\n12\n13\n14\n17\n16\n15\n32\n"
+    },
+    {
+      "page_number": 33,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nEl  inicio  y  final  de  la  rampa  se  dibujan  con  líneas  de \ncontorno visible (trazo de 02,03mm) a la altura de 1 m se \ncolocan una o dos líneas de rotura larga. Cuando se trata \nde una rampa que comienza en el piso representado se \ndibuja con línea delgada continua (02,03mm) y lo demás \ncon línea de trazos cortos, la baranda se representa con \ndos líneas paralelas de contorno visible y se complementa \ncon una flecha llamada línea de huella. Es importante la \nindicación de la pendiente respectiva.  \n•\nEstacionamientos: se  representan  con  línea  delgada \ncontinua (trazo de 02 mm).\n5.4. Representación de muebles\nLa forma del mueble se dibuja con línea de contorno visible, \nutilizando plantillas.\n  \n33\n"
+    },
+    {
+      "page_number": 34,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "CUADRO Nº 7\nCUADRO DE ACABADOS\nACABADOS\nPISOS\nCONTRA-\nZOCALOS\nZOCALOS\nTARRAJEO\nPIN-\nTURAS\nMUROS\nCIELO-\nRRASO\nMUROS\nSALA \nCOMEDOR\nO\nO\nO\nO\nO\nCOCINA\nO\nO\nO\nO\nO\nDORMITORIO\nO\nO\nO\nO\nO\nO\nLAVANDERIA\nO\nO\nO\nO\nO\nO\nETC.\n•\nMediante cortes esquemáticos donde se especifican  todos \nlos acabados para cada ambiente o grupo de ambientes, \nprincipalmente en edificios y hospitales.\n5.5. Simbología de niveles de piso\nSe tienen dos casos:\n•\nEn  planta: se  presenta  mediante  un  círculo  pequeño, \ndividido en cuatro partes mediante la superposición de una \ncruz ligeramente más grande, con dos cuartos de círculo \npintados alternadamente, seguido de la abreviatura N.P.T. \n(NIVEL DEL PISO TERMINADO) y los signos “+” o “-“.\nPAR\nQUE\nT\nLOS\nETA\nCEM\nENT\nO\nMA\nDER\nA\nLOS\nETA\nCEM\nENT\nO\nMAY\nOLI\nCA\nMAD\nERA\nDEC \nFRO\nTAC\nHAD\nO\nSAL\nPIC\nADO\nCEM\nENT\nO\nYES\nO\nLAT\nEX\nTEM\nPLE\n34\n"
+    },
+    {
+      "page_number": 35,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "N.P.T. +6.54\nCOMEDOR\n•\nEn cortes y elevaciones: se presenta de manera similar a \nla planta, pero la cruz no sobresale y además acompaña \nuna flecha vertical, para especificar la ubicación del nivel.\n5.6. Otros símbolos arquitectónicos\nExisten  otros  símbolos  que  generalmente  se  utilizan  cuando  se \nhacen planos completos de una edificación:\n•\nNumero de ambiente: se representa mediante un número \nde  tres  o  más  dígitos  ubicados  dentro  de  un  pequeño \nrecuadro, donde los dos números de la derecha representan el \npiso donde se encuentra ubicado.\n                                            A1\n•\nTipo  de  chapa: se  presenta  mediante  una  letra  ubicada \ndentro de un triángulo.\n5.7.  Rótulos\nDeben  estar  en  el  ángulo  inferior  derecho  de  la  lámina,  con \nposibilidades de ampliación hacia la izquierda y hacia arriba. Su \ntamaño está en función de las dimensiones de la lámina. Debe \ncontener las siguientes indicaciones:\nA\n35\n"
+    },
+    {
+      "page_number": 36,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "DISEÑO:\nPLANO:\nPROYECTO:  \nPROFESIONAL:  \nINSTALACIONES ELECTRICAS\nESCALA:\nVIVIENDA UNIFAMILIAR\nDIBUJO:\nFECHA:\n1/100, 1/50\nIE - 01\nMEJORE SU NEGOCIO DE CONSTRUCIÓN - MESUNCO\nWALTER SMITH C.\nINGENIERO   C.I.P. 14816\nMODELO:  \nErwin Smith T.\nJ.Luis Mayhua Q.\nOCT. -2003\n•\nClase de dibujo (croquis, anteproyecto, proyecto, etc)\n•\nDistintas  proyecciones  de  la  edificación  (ubicación,  planta, \nprimer piso, etc)\n•\nLa Escala, Fecha, Dibujante y Proyectista\n•\nEl  número  del  plano  ubicado  en  la  parte  inferior  derecha \nacompañado de la letra inicial del tipo de plano: arquitectura \n(A-1;A-2);  estructuras:  (E-1;E-2)  instalaciones  sanitarias: \n(IS-1;IS-2); instalaciones eléctricas (IE-1;IE-2).\nSe indicarán  otros aspectos en función de la institución a la cual se \npresentan: Municipio, Ministerio, etc. Acompañarán el nombre del \nprofesional o empresa y el propietario.\n \nROTULO TIPO 1\n36\n"
+    },
+    {
+      "page_number": 37,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "0.40\nCORTE 2-2\n0.15\n0.10\n0.80\nN.P.T. + 0.30\nN.F.P. + 0.25\nN.T.N. + 0.15\n6.\nPLANOS DEL PROYECTO DE ESTRUCTURAS\nEn toda edificación y en general en toda construcción el primer \nplano utilizado es el  Plano de cimentaciones,  que es el que \nnos indica donde hacer los trazos de las zanjas, su ancho y \nprofundidad, así como las dimensiones de los sobrecimientos, \ndonde van ubicadas las columnas, el tipo de concreto a utilizar, \netc. \n6.1. Plano de Cimientos\nEl  Plano de cimientos generalmente es un plano en planta, \ndibujado a escala 1:50 en el que se puede observar:\n•\nCimientos: que están limitadas por una línea gruesa que \ndebe trazarse sobre el terreno con yeso.\n•\nSobrecimientos: que  están  dibujados  por  una  línea \ndelgada,  dibujada  dentro  de  los  cimientos  indicando  el \nancho de la pared que soportará.\n•\nCortes  de  los  cimientos:  donde  puede  observarse  la \nprofundidad de la zanja, la altura del sobrecimiento y el \nfierro, si se ha previsto.\n37\n"
+    },
+    {
+      "page_number": 38,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "ANCLAJE  DE  COLUMNAS\nEN  CIMIENTO\nLLENAR  CONCRETO  ENTRE\nMUROS  DENTADOS\n.15\n.15\n0.20\n0.20\nCIMIENTO\n4 @ 0.10\nRto. según col.\nSOBRECIMIENTO\nColumnas: que generalmente se encuentran en la intersección de \nlos ejes de los cimientos.\n•\nDetalle de la grada: donde se observa la profundidad de \nla cimentación, ubicación del fierro, etc.\n0.25\n0.25\n4 ø 1/2\" \nØ 1/4\", 5 @.10,\nRsto. @.25\nCOLUMNA  C2\n38\n"
+    },
+    {
+      "page_number": 39,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "CORTE \nZAPATA 1\n.15\n.15\n0.20\n0.20\nCIMIENTO\n4 @ 0.10\nRto. según col.\nØ 1/2\" @.30m\nØ 1/2\" @.35m\nZ1\n1.00\n1.00\nZAPATA 1\n•\nZapatas: indicando  profundidad,  altura,  posición  de  las \ncolumnas, etc.\n  \n6.2. Formas de representación del suelo\nA continuación se presenta un detalle de la representación de los \ndistintos tipos de suelo.\n                                     \n \n                               Piso terminado\n  Hormigón\n      Tierra\n                                                  Concreto ciclópeo    \n                                      Arena\n39\n"
+    },
+    {
+      "page_number": 40,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "ø DE COLUMNA  O  VIGA\nESPECIF.\nDETALLE  DE  DOBLADO  DE   ESTRIBOS  EN  \nCOLUMNAS  Y  VIGA\n45°\na\nr\nESPECIFICADO\n45°\na\n6 cm.\nø\nr\n1/4\"\n2 cm.\n3/8\"\n3 cm.\n10 cm.\nø LOSA  MACIZA\nE S C A L E R A     S/C  500 Kg/cm²\nVT - 1\nE  1/20\n8 ø 3/8\"\n7 ø 1/2\"\n0.25  TIPICO\nTRAMO    III - IV - VI\nt = 0.15\n0.15\n0.25\n0.50\nø 3/8\" @ 0.30\n6.3.\nCurvaturas del fierro – estribos \nEl  fierro  tiene  diámetros  críticos  para  su  curvatura, \ngeneralmente  este  está  indicado  en  el  plano  (ver  detalle  a \ncontinuación)\n6.4.\nFierro  en  columnas  y  escaleras:  se  traza  con  línea \ndelgada (trazo de 03 o 04mm)\n40\n"
+    },
+    {
+      "page_number": 41,
+      "width": 595.0,
+      "height": 842.0,
+      "text": " \nINSERTAR PLANOS ESTRUCTURAS\nE-01 \n41\n"
+    },
+    {
+      "page_number": 42,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "INSERTAR PLANOS ESTRUCTURAS\nE-02 \n42\n"
+    },
+    {
+      "page_number": 43,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "7.  PLANOS DEL PROYECTO SANITARIO\nLas instalaciones sanitarias en cualquier edificación requieren de \ncuidado y del análisis detallado y minucioso para que garantice \nque el funcionamiento del sistema sea óptimo y que pueda ser \nabastecido con suficiente cantidad de agua a presión.\n7.1. Algunas definiciones sobre proyectos sanitarios\n7.\nAgua potable: es el agua que ha sido tratada por métodos \nnaturales,  mecánicos  y químicos,  de manera que esté apta \npara el consumo humano, según las normas que al respecto \ndispone el Ministerio de Salud y la Organización Panamericana \nde la Salud.\n8.\nAguas servidas: es el agua que ha sido usada para cualquier \nactividad  humana  o  industrial  y  por  tanto  tiene  índices  de \ncontaminación por encima de los valores permitidos para la \nvida.\n9.\nSistema de agua potable: es aquel sistema que distribuye el \nagua potable en una población. Para tal fin hace uso de una \nserie  de  estructuras  como  la  captación,  desarenadores, \ndosificadores, floculantes y filtros y las redes de distribución de \nagua que constan de reservorios, tuberías de distribución y \nsistemas contra incendios.\n10.\nTubería matriz: son las tuberías que conforman la red de \nabastecimiento de agua potable. Estas tuberías pueden tener \ndiámetros desde 1” hasta más de 20”, dependiendo del caudal \nque es necesario conducir.\n11.\nSistema  de  alcantarillado: es  aquél  que  sirve  para \nrecolectar y evacuar las aguas negras o aguas servidas desde \ncualquier lugar (viviendas, industrias, etc.) hasta las plantas \nde tratamiento de aguas servidas y luego ser vertidas a lechos \nnaturales como ríos o mares.\n12.\nTubería de conexión domiciliaria: conecta la tubería matriz \ncon el medidor de la edificación o con el dispositivo regulador \n43\n"
+    },
+    {
+      "page_number": 44,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "del consumo. A partir del medidor o del dispositivo regulador \ndel consumo, cualquier instalación le corresponde al usuario de \nla misma. Se dibuja con una línea recta (trazo de 02mm)\n13.\nMedidor de agua: Dispositivo usado exclusivamente por la \nempresa prestadora del servicio de agua. Los diámetros para \nlos medidores suelen ser: (1/2”; 5/8”; ¾”; 1”; 11/2”; 2”, etc.). \nSe dibuja con (02mm) como:\n14.\nTubería  de  aducción: es  la  tubería  que  conduce  el  agua \npotable  desde  el  medidor  hasta  las  válvulas  de  servicio,  el \ntanque cisterna o tanque elevado, según el sistema utilizado. \nSe dibuja con (trazo de 03mm)\n15.\nTanque cisterna: sirve para almacenar agua hasta que sea \nbombeada  al  tanque  elevado;  su  capacidad  depende  del \nconsumo de la edificación y deberá llenarse en un máximo de \ncuatro horas. Se dibuja como un círculo o un cuadrado, según \nsu forma.\nM\nCISTERNA\n44\n"
+    },
+    {
+      "page_number": 45,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "16.\nTanque elevado: tanque que se encuentra en la parte más \nalta  de  la  edificación  y  sirve  para  almacenar  el  agua  y \nproporcionar  la  presión  necesaria  en  todos  los  ramales  del \nsistema. Se indica con un círculo o un cuadrado, según su \nforma (trazo de 03mm).\n17.\nRamales: es la red de tuberías que llevan agua potable a cada \naparato sanitario o punto. Existe como mínimo un ramal por \ncada piso de la edificación.\n \nTANQUE\nELEVADO\n45\n"
+    },
+    {
+      "page_number": 46,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "7.2. Simbología utilizada en los planos sanitarios\nA  continuación  se  presentan  los  principales  símbolos  usados \ncomúnmente en el diseño de las instalaciones sanitarias. \na.\nAgua Potable\n•\nTubería de agua fría: Dibujada en línea punteada gruesa \n(trazo de 02 o 03mm)\n•\nTubería de agua caliente: se dibuja con línea 03mm y \ndos puntos intercalados.\n•\nCodo de 90º:\n•\nCodo de 90º que sube:\n46\n"
+    },
+    {
+      "page_number": 47,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nCodo de 90º que baja:\n•\nTee:\n•\nTee que sube: \n•\nTee que baja: \n•\nVálvula de compuerta: \n47\n"
+    },
+    {
+      "page_number": 48,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nVálvula en montante: \n•\nVálvula general: \n•\nCaño de riego:\n•\nTapones:\n Tapón macho        Tapón hembra\n•\nVálvula de globo:\n48\n"
+    },
+    {
+      "page_number": 49,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nVálvula retención (check): tal como se indica.\n•\nVálvula de llenado : \n•\nCruce de tuberías sin conexión: aplicado para indicar las \nintersecciones de las redes, sin conexión. Se dibujan según \nse indica.\n49\n"
+    },
+    {
+      "page_number": 50,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "DETALLE DE UNA CONEXIÓN DE TUBERÍAS DE THERMA\nESC: 1/25\nCALENTADOR ELECTRICO VERT.\nBRECHA DE AIRE\nVALV. CHECK\nN.P.T.\nA.F.\nA.C.\nCONO DE REBOSE\nVALV. SEGURIDAD\nTRAMPA \"P\" Ø2\"\nVALV. COMPUERTA\nUNION UNIVERSAL\nUNION UNIVERSAL\nVALV. COMPUERTA\nUNION UNIVERSAL\nUNION UNIVERSAL\n1.95m\n50\n"
+    },
+    {
+      "page_number": 51,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "b. DESAGÜE\n•\nTubería de desagüe: Representada con línea continua \n(trazo de 0.4mm)\n• Tubería de ventilación de desagüe:\nDibujada con línea punteada (trazo de 04 mm)\n• Codo de 90º: \n• Codo de 90º que sube: \n• Codo de 90º que baja:\n51\n"
+    },
+    {
+      "page_number": 52,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "• Yee de 45º: \n• Registro roscado de bronce: \n• Tee sanitaria:  \n• Trampa: \n• Caja de registro: \n• Yee doble sanitaria:\n52\n"
+    },
+    {
+      "page_number": 53,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "7.3.\nNomenclatura Internacional\nA  continuación  se  presentan  los  símbolos  para  accesorios  y \nválvulas de tuberías, adoptados por la Asociación Americana de \nIngenieros, mostrando los diversos tipos de conexiones comunes.\n53\n"
+    },
+    {
+      "page_number": 54,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "54\n"
+    },
+    {
+      "page_number": 55,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "55\n"
+    },
+    {
+      "page_number": 56,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "NOMENCLATURA DE TUBO GALVANIZADO\nNOMENCLATURA INTERNACIONAL\n56\n"
+    },
+    {
+      "page_number": 57,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "INSERTAR PLANO SANITARIO IS-01\n57\n"
+    },
+    {
+      "page_number": 58,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "8. PLANO DE LAS INSTALACIONES ELECTRICAS\nLas instalaciones eléctricas en cualquier edificación requieren de \ncuidado y del análisis detallado y minucioso de las necesidades, \npara que se garantice que el funcionamiento del sistema sea \nóptimo y que pueda ser abastecido con suficiente cantidad de \nenergía eléctrica en condiciones de máxima seguridad.\n8.1. Conceptos básicos sobre instalaciones eléctricas\n•\nEl electrón es la carga elemental o cantidad de electricidad \nnegativa. Todo portador esencial de electricidad se denomina \nion.\n•\nLa intensidad (I) de la corriente eléctrica es la cantidad de \nelectricidad que fluye por una unidad de tiempo. La unidad es \nel amperio (amp) \n•\nLa diferencia de potencial o fuerza electromotriz (f.e.m.) es \nla  fuerza  o  tensión  que  hace  circular  la  corriente  en  un \ncircuito. La unidad es llamada voltio.\n•\nLa  potencia es  la  energía  suministrada  o  producida  por \nunidad de tiempo, la unidad es el vatio (w).\n•\nLa  corriente continua o directa solo tiene un sentido y no \ntiene pulsaciones (va desde el polo negativo al polo positivo).\n•\nLa corriente alterna varía periódicamente de intensidad en \nmagnitud y en sentido.  \n•\nLa  transmisión  de  corriente puede  realizarse  a  diversos \nvoltajes: Alta tensión: 60,000 voltios; media tensión: 10,000 \nvoltios y baja tensión: 220 voltios o 110 voltios.\n•\nLas instalaciones eléctricas domiciliarias pueden hacerse de \ndos maneras:  conexión monofásica (dos cables), cuando \nse entrega una línea con carga eléctrica y la línea de retorno. \n58\n"
+    },
+    {
+      "page_number": 59,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nConexión trifásica (tres cables), cuando se entregan dos \nlíneas con carga eléctrica y la línea de retorno. \n8.2. Simbología del dibujo de planos de las instalaciones \neléctricas\nA  continuación  se  presentan  los  principales  símbolos  usados \ncomúnmente en el diseño de las instalaciones eléctricas. \n•\nMedidor watt-hora:\n•\nTablero general:\nwh\n59\n"
+    },
+    {
+      "page_number": 60,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nTablero de distribución:\n•\nSalida de artefacto en el techo:\n•\nSalida para artefacto en la pared – braquete:\n•\nArtefacto empotrado en el techo – spot light:\n•\nSalida para artefacto fluorescente en el techo:\n60\n"
+    },
+    {
+      "page_number": 61,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nCaja de paso y empalme en el techo:\n•\nTomacorriente monofásico simple:\n•\nTomacorriente monofásico simple (alto) igual que el \nanterior pero ubicado a 1.20 m de altura sobre el piso \nterminado.\n•\nTomacorriente monofásico simple en el piso:\nP\nT\n61\n"
+    },
+    {
+      "page_number": 62,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "C\n•\nSalida para cocina eléctrica trifásica:\n•\nInterruptor simple o unipolar:\n•\nInterruptor bipolar:\n•\nInterruptor de tres vías (conmutación): igual que el \nanterior, pero con tres conexiones en la parte posterior del \nartefacto. \n•\nInterruptor cuatro vías: igual que los anteriores pero con \ncuatro conexiones en la parte posterior del artefacto.\n2\n3\n4\n62\n"
+    },
+    {
+      "page_number": 63,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nTimbre:\n•\nSalida para televisión:\n•\nSalida para teléfono externo:\n•\nSalida para teléfono interno:\n•\nSalida para intercomunicador:\nT\nTV\n63\n"
+    },
+    {
+      "page_number": 64,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nSalida para extractor:\n•\nInterruptor bipolar con fusible:\n•\nCaja de interconexión telefónica (intercomunicador):\n•\nPozo de toma a tierra:\n•\nTubería empotrada en pared o techo: dibujada con línea \ncontinua (03 mm), en arco amplio.\nE\n64\n"
+    },
+    {
+      "page_number": 65,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nTubería empotrada en el piso: dibujada con línea punteada \ngruesa (03 mm), en arco amplio.\n•\nCircuito  en  conducto  expuesto: dibujado  con  línea \npunteada fina (03 mm), generalmente en arco amplio.\n•\nNúmero de conductores: dibujado con línea continua (03 \nmm), generalmente en arco amplio, con pequeñas barras que \nla  cortan.  El  número  de  barras  indica  el  número  de \nconductores.\n•\nTubería para teléfono externo: dibujada  con línea  larga \nintercalada con una línea corta (03 mm), generalmente en \narco amplio.\n65\n"
+    },
+    {
+      "page_number": 66,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "•\nTubería  para  timbre  en  piso: dibujada  con  línea  larga \nintercalada con tres puntos (03 mm), generalmente en arco \namplio.\n•\nInterruptor termomagnético:\n•\nSalida para therma o calentador:\n66\n"
+    },
+    {
+      "page_number": 67,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "Insertar plano instalaciones electricas IE-01\n67\n"
+    },
+    {
+      "page_number": 68,
+      "width": 595.0,
+      "height": 842.0,
+      "text": "El presente Manual de Lectura de Planos es un Documento de Trabajo, \nimpreso sólo para su revisión y análisis.\n68\n"
+    }
+  ]
+}
