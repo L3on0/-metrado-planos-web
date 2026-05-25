@@ -1,7 +1,7 @@
 RESUMEN Y CONTEXTO DE ARCHIVOS EXTRAIDOS
 ================================================
-Carpeta: C:\Users\Mauro\Downloads
-Creado: 2026-05-25T04:00:04
+Carpeta: C:\Users\Mauro\github_metrado_planos_web_upload\data\references
+Creado: 2026-05-25T13:39:20
 
 Resumen y contexto de los archivos TXT y JSON generados desde los PDF de referencia del proyecto de metrados.
 
@@ -24,7 +24,7 @@ Uso recomendado en el proyecto:
 Descripcion del TXT generado:
   Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
 Descripcion del JSON generado:
-  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.
 Terminos frecuentes detectados:
   planos, plano, medidas, piso, metro, trazo, tuber, neas, sistema, escala, visi, edificaci, agua, construcci, representaci, planta, instalaciones, dise
 Vista previa de contenido:
@@ -35,13 +35,13 @@ Vista previa de contenido:
 NORMA DE METRADOS
 Nombre base: norma_metrados
 Paginas del PDF: 167
-Paginas con texto extraido: 0
-Caracteres extraidos: 166
+Paginas con texto extraido: 167
+Caracteres extraidos: 303867
 
 Archivos relacionados:
   PDF : norma_metrados.pdf (5685998 bytes)
-  TXT : norma_metrados.txt (5568 bytes)
-  JSON: norma_metrados.json (17845 bytes)
+  TXT : norma_metrados.txt (319241 bytes)
+  JSON: norma_metrados.json (336447 bytes)
 
 Contexto:
   Documento normativo o tecnico con criterios para medir partidas y organizar cantidades de obra.
@@ -50,12 +50,12 @@ Uso recomendado en el proyecto:
 Descripcion del TXT generado:
   Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
 Descripcion del JSON generado:
-  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.
 Terminos frecuentes detectados:
-  
+  unidad, medida, metro, forma, medicion, computo, cuadrado, concreto, comprende, partidas, elementos, obra, instalacion, ingenieros, area, romero, tipo, paulino
 Vista previa de contenido:
-  Primera pagina con texto: 
-  Pagina intermedia: 
+  Primera pagina con texto: Resoucidn No073-2010/VIVIENDA/VMCS-DNC. Lima, 04 de Mayo de 2010 VISTOS: EI Informe No 007-2010/VIVIENDA-VMCS-DNC-JMG, el Informe Tecnico No 002-2010/VIVIENDA-VMCS/DNC/DEN-RPS, el Informe de Asesoria Legal No 017- 2010-VIVIENDA/OGAJ/RPBZ y el Informe No 016-2010-VIVIENDA-VMCS-DNC; Y, CONSIDERANDO: Que, la Ley N° 27792, Ley de Organizacion y Funciones del Ministerio de Vivienda, Construccion y Saneamiento, determina y regula el ambito, estructura organica basica, competencia y funciones del Ministerio de Vivienda, Construccion y politicas de alcance nacionai aplicables en materia de vivienda, urbanismo, construccion y saneamiento; ABOGADO Que, el Decreto Supremo No 002-2002-VIVIENDA, y sus modificaciones, establecen que la Direccion Nacional de Construccion es el organo de linea encargado de proponer lineamientos de politica, normas y procedimientos referidos a la construccion de infraest
+  Pagina intermedia: OE.3.11.5 PINTURA DE CONTRAZOCALOS Y BARANDAS. Unidad de Medida. Metro (m) Forma de medicion Se computara el total de las longitudes de contrazocalos y barandas respectivamente. Se diferenciara por tipo de pintura. OE.3.11.6 PINTURA DE ESTRUCTURAS METALICAS. Unidad de Medida. Metro (m2) Forma de medicion pintura OE.3.12 VARIOS, LIMPIEZA, JARDINERiA Comprende todos aquellos trabajos no mencionados especificamente en las normas y que por su naturaleza no pueden comprenderse en los conceptos de las demas partidas, por ello la relacion que se da es simplemente enumerativa y no limitativa, pudiendose agregarse otras subpartidas. Se mencionan especialmente trabajos de limpieza y de jardineria y en muchos de ellos la apreciacion del costo es de caracter global. OE.3.12.1 LIMPIEZAPERMANENTE DE OBRA Se refiere al trabajo de limpieza que debe efectuarse durante fodo el transcurso de la obra elimin
 
 ------------------------------------------------
 COSTOS Y PRESUPUESTOS CAPECO
@@ -76,7 +76,7 @@ Uso recomendado en el proyecto:
 Descripcion del TXT generado:
   Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
 Descripcion del JSON generado:
-  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.
 Terminos frecuentes detectados:
   obra, costo, total, equipo, mano, capataz, unitario, herramientas, operario, materiales, cemento, madera, material, fecha, cantidad, unid, tipo, construcci
 Vista previa de contenido:

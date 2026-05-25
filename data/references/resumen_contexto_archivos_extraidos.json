@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-05-25T04:00:04",
-  "folder": "C:\\Users\\Mauro\\Downloads",
+  "created_at": "2026-05-25T13:39:20",
+  "folder": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references",
   "purpose": "Resumen y contexto de los archivos TXT y JSON generados desde los PDF de referencia del proyecto de metrados.",
   "files_summary": [
     {
@@ -9,17 +9,17 @@
       "files": {
         "pdf": {
           "name": "Manual LECTURA DE PLANOS Y METRADOS.pdf",
-          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.pdf",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Manual LECTURA DE PLANOS Y METRADOS.pdf",
           "size_bytes": 1283475
         },
         "txt": {
           "name": "Manual LECTURA DE PLANOS Y METRADOS.txt",
-          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.txt",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Manual LECTURA DE PLANOS Y METRADOS.txt",
           "size_bytes": 39359
         },
         "json": {
           "name": "Manual LECTURA DE PLANOS Y METRADOS.json",
-          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.json",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Manual LECTURA DE PLANOS Y METRADOS.json",
           "size_bytes": 44645
         }
       },
@@ -29,7 +29,7 @@
       "context_summary": "Material de apoyo para interpretar planos de construccion y relacionar la lectura grafica con criterios de metrado.",
       "recommended_project_use": "Sirve como base metodologica para entender simbolos, escalas, representaciones y extraccion de cantidades desde planos.",
       "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
-      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.",
       "important_terms_detected": [
         "planos",
         "plano",
@@ -61,31 +61,50 @@
       "files": {
         "pdf": {
           "name": "norma_metrados.pdf",
-          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.pdf",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\norma_metrados.pdf",
           "size_bytes": 5685998
         },
         "txt": {
           "name": "norma_metrados.txt",
-          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.txt",
-          "size_bytes": 5568
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\norma_metrados.txt",
+          "size_bytes": 319241
         },
         "json": {
           "name": "norma_metrados.json",
-          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.json",
-          "size_bytes": 17845
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\norma_metrados.json",
+          "size_bytes": 336447
         }
       },
       "page_count": 167,
-      "pages_with_extracted_text": 0,
-      "character_count_extracted": 166,
+      "pages_with_extracted_text": 167,
+      "character_count_extracted": 303867,
       "context_summary": "Documento normativo o tecnico con criterios para medir partidas y organizar cantidades de obra.",
       "recommended_project_use": "Sirve para validar reglas de calculo, unidades, alcances y forma de presentar partidas en la tabla de metrados.",
       "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
-      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
-      "important_terms_detected": [],
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.",
+      "important_terms_detected": [
+        "unidad",
+        "medida",
+        "metro",
+        "forma",
+        "medicion",
+        "computo",
+        "cuadrado",
+        "concreto",
+        "comprende",
+        "partidas",
+        "elementos",
+        "obra",
+        "instalacion",
+        "ingenieros",
+        "area",
+        "romero",
+        "tipo",
+        "paulino"
+      ],
       "content_preview": {
-        "first_non_empty_page_excerpt": "",
-        "middle_page_excerpt": ""
+        "first_non_empty_page_excerpt": "Resoucidn No073-2010/VIVIENDA/VMCS-DNC. Lima, 04 de Mayo de 2010 VISTOS: EI Informe No 007-2010/VIVIENDA-VMCS-DNC-JMG, el Informe Tecnico No 002-2010/VIVIENDA-VMCS/DNC/DEN-RPS, el Informe de Asesoria Legal No 017- 2010-VIVIENDA/OGAJ/RPBZ y el Informe No 016-2010-VIVIENDA-VMCS-DNC; Y, CONSIDERANDO: Que, la Ley N° 27792, Ley de Organizacion y Funciones del Ministerio de Vivienda, Construccion y Saneamiento, determina y regula el ambito, estructura organica basica, competencia y funciones del Ministerio de Vivienda, Construccion y politicas de alcance nacionai aplicables en materia de vivienda, urbanismo, construccion y saneamiento; ABOGADO Que, el Decreto Supremo No 002-2002-VIVIENDA, y sus modificaciones, establecen que la Direccion Nacional de Construccion es el organo de linea encargado de proponer lineamientos de politica, normas y procedimientos referidos a la construccion de infraest",
+        "middle_page_excerpt": "OE.3.11.5 PINTURA DE CONTRAZOCALOS Y BARANDAS. Unidad de Medida. Metro (m) Forma de medicion Se computara el total de las longitudes de contrazocalos y barandas respectivamente. Se diferenciara por tipo de pintura. OE.3.11.6 PINTURA DE ESTRUCTURAS METALICAS. Unidad de Medida. Metro (m2) Forma de medicion pintura OE.3.12 VARIOS, LIMPIEZA, JARDINERiA Comprende todos aquellos trabajos no mencionados especificamente en las normas y que por su naturaleza no pueden comprenderse en los conceptos de las demas partidas, por ello la relacion que se da es simplemente enumerativa y no limitativa, pudiendose agregarse otras subpartidas. Se mencionan especialmente trabajos de limpieza y de jardineria y en muchos de ellos la apreciacion del costo es de caracter global. OE.3.12.1 LIMPIEZAPERMANENTE DE OBRA Se refiere al trabajo de limpieza que debe efectuarse durante fodo el transcurso de la obra elimin"
       }
     },
     {
@@ -94,17 +113,17 @@
       "files": {
         "pdf": {
           "name": "Costos_y_Presupuestos_CAPECO.pdf",
-          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.pdf",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Costos_y_Presupuestos_CAPECO.pdf",
           "size_bytes": 18027974
         },
         "txt": {
           "name": "Costos_y_Presupuestos_CAPECO.txt",
-          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.txt",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Costos_y_Presupuestos_CAPECO.txt",
           "size_bytes": 599595
         },
         "json": {
           "name": "Costos_y_Presupuestos_CAPECO.json",
-          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.json",
+          "path": "C:\\Users\\Mauro\\github_metrado_planos_web_upload\\data\\references\\Costos_y_Presupuestos_CAPECO.json",
           "size_bytes": 637548
         }
       },
@@ -114,7 +133,7 @@
       "context_summary": "Referencia tecnica sobre costos, presupuestos, analisis y estructura economica de obras de construccion.",
       "recommended_project_use": "Sirve para vincular metrados con presupuestos, costos unitarios, analisis de partidas y criterios de estimacion.",
       "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
-      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height, text y, cuando aplica, extraction_method.",
       "important_terms_detected": [
         "obra",
         "costo",
