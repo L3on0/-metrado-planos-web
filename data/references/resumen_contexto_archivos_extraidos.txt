@@ -1,0 +1,84 @@
+RESUMEN Y CONTEXTO DE ARCHIVOS EXTRAIDOS
+================================================
+Carpeta: C:\Users\Mauro\Downloads
+Creado: 2026-05-25T04:00:04
+
+Resumen y contexto de los archivos TXT y JSON generados desde los PDF de referencia del proyecto de metrados.
+
+------------------------------------------------
+MANUAL DE LECTURA DE PLANOS Y METRADOS
+Nombre base: Manual LECTURA DE PLANOS Y METRADOS
+Paginas del PDF: 68
+Paginas con texto extraido: 68
+Caracteres extraidos: 35018
+
+Archivos relacionados:
+  PDF : Manual LECTURA DE PLANOS Y METRADOS.pdf (1283475 bytes)
+  TXT : Manual LECTURA DE PLANOS Y METRADOS.txt (39359 bytes)
+  JSON: Manual LECTURA DE PLANOS Y METRADOS.json (44645 bytes)
+
+Contexto:
+  Material de apoyo para interpretar planos de construccion y relacionar la lectura grafica con criterios de metrado.
+Uso recomendado en el proyecto:
+  Sirve como base metodologica para entender simbolos, escalas, representaciones y extraccion de cantidades desde planos.
+Descripcion del TXT generado:
+  Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
+Descripcion del JSON generado:
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+Terminos frecuentes detectados:
+  planos, plano, medidas, piso, metro, trazo, tuber, neas, sistema, escala, visi, edificaci, agua, construcci, representaci, planta, instalaciones, dise
+Vista previa de contenido:
+  Primera pagina con texto: CENTRO DE CAPACITACION VELSA GROUP LECTURA DE PLANOS Y METRADOS MANUAL
+  Pagina intermedia: N.P.T. +6.54 COMEDOR • En cortes y elevaciones: se presenta de manera similar a la planta, pero la cruz no sobresale y además acompaña una flecha vertical, para especificar la ubicación del nivel. 5.6. Otros símbolos arquitectónicos Existen otros símbolos que generalmente se utilizan cuando se hacen planos completos de una edificación: • Numero de ambiente: se representa mediante un número de tres o más dígitos ubicados dentro de un pequeño recuadro, donde los dos números de la derecha representan el piso donde se encuentra ubicado. A1 • Tipo de chapa: se presenta mediante una letra ubicada dentro de un triángulo. 5.7. Rótulos Deben estar en el ángulo inferior derecho de la lámina, con posibilidades de ampliación hacia la izquierda y hacia arriba. Su tamaño está en función de las dimensiones de la lámina. Debe contener las siguientes indicaciones: A 35
+
+------------------------------------------------
+NORMA DE METRADOS
+Nombre base: norma_metrados
+Paginas del PDF: 167
+Paginas con texto extraido: 0
+Caracteres extraidos: 166
+
+Archivos relacionados:
+  PDF : norma_metrados.pdf (5685998 bytes)
+  TXT : norma_metrados.txt (5568 bytes)
+  JSON: norma_metrados.json (17845 bytes)
+
+Contexto:
+  Documento normativo o tecnico con criterios para medir partidas y organizar cantidades de obra.
+Uso recomendado en el proyecto:
+  Sirve para validar reglas de calculo, unidades, alcances y forma de presentar partidas en la tabla de metrados.
+Descripcion del TXT generado:
+  Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
+Descripcion del JSON generado:
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+Terminos frecuentes detectados:
+  
+Vista previa de contenido:
+  Primera pagina con texto: 
+  Pagina intermedia: 
+
+------------------------------------------------
+COSTOS Y PRESUPUESTOS CAPECO
+Nombre base: Costos_y_Presupuestos_CAPECO
+Paginas del PDF: 375
+Paginas con texto extraido: 359
+Caracteres extraidos: 555239
+
+Archivos relacionados:
+  PDF : Costos_y_Presupuestos_CAPECO.pdf (18027974 bytes)
+  TXT : Costos_y_Presupuestos_CAPECO.txt (599595 bytes)
+  JSON: Costos_y_Presupuestos_CAPECO.json (637548 bytes)
+
+Contexto:
+  Referencia tecnica sobre costos, presupuestos, analisis y estructura economica de obras de construccion.
+Uso recomendado en el proyecto:
+  Sirve para vincular metrados con presupuestos, costos unitarios, analisis de partidas y criterios de estimacion.
+Descripcion del TXT generado:
+  Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.
+Descripcion del JSON generado:
+  Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.
+Terminos frecuentes detectados:
+  obra, costo, total, equipo, mano, capataz, unitario, herramientas, operario, materiales, cemento, madera, material, fecha, cantidad, unid, tipo, construcci
+Vista previa de contenido:
+  Primera pagina con texto: PRESENTA CION Con la finalidad de atender la solicitud de nuestros asociados y de numerosas personales naturales y jurídicas dedicadas a la construcción, la Cámara Peruana de la Construcción CAPECO, con el objetivo de apoyary fomentar la investigación para el mejoramiento de la actividad de la construcción y fiel a sus principios de vocación de servicio y de capacitación de quienes laboran en el sector, en esta oportunidad tiene el agrado de presentar la nueva edición actualizada de su título No 29 "Costos y Presupuestos de Edificaciónf1, obra que forma parte de nuestra prestigiosa COL ECCIÓNDEL CONSTRUCTOR. Elpresente título, constituye la octava edición de esta publicación, la cual estamos plenamente convencidos que será de mucha utilidad como una herramienta de consulta necesaria para los estudiantes, profesionales y empresas involucradas en el sector de la construcción. Esta edición
+  Pagina intermedia: ANALlSlS DE COSTO UNITARIO 1 Obra Hoja NQ : 093 Hecho por Propietario : Ubicación : Revisado por : Fecha PARTIDA NQ : Cielo raso con mezcla -con cintas Unidad : m2 Especlicaclones : Incluye armar, desarmar y transportar andamio. Espesor del revestimiento 1,5 cm. Mezcla de pañateo y cintas 1 : 4, mezcla de revestimiento 1 :5 Cuadrilla : Pañeteo y cintas = 0,l capataz + 1 operario + 0,5 peón Revestimiento = 0,l capataz + 1 operario + 0,5 peón Rendimiento : Para andamio = 116 peón(adiciona1) Pañete0 y cintas: 20 m2ldia. Revestimiento: 6 m2ldia. Para andamio. 20 m21dia Capataz Operario peón I I I "' I.U. MATERIALES Andamio de madera 1 ~2 1 Total Costo do Miino de Obra EQUIPO, HERRAMIENTAS 1 I 2,16 43 Regla de madera 0,027 43 Clavos de 3" 02 'a 0,03 37 Parcial 0,257 0,033 Cemento Portland tipo I Arena fina Herramientas 3% M. Obi Precio Unitario Costo de tdaterlal MANO DE OBRA bls m3 Costo de

@@ -1,0 +1,144 @@
+{
+  "created_at": "2026-05-25T04:00:04",
+  "folder": "C:\\Users\\Mauro\\Downloads",
+  "purpose": "Resumen y contexto de los archivos TXT y JSON generados desde los PDF de referencia del proyecto de metrados.",
+  "files_summary": [
+    {
+      "base_name": "Manual LECTURA DE PLANOS Y METRADOS",
+      "title": "Manual de lectura de planos y metrados",
+      "files": {
+        "pdf": {
+          "name": "Manual LECTURA DE PLANOS Y METRADOS.pdf",
+          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.pdf",
+          "size_bytes": 1283475
+        },
+        "txt": {
+          "name": "Manual LECTURA DE PLANOS Y METRADOS.txt",
+          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.txt",
+          "size_bytes": 39359
+        },
+        "json": {
+          "name": "Manual LECTURA DE PLANOS Y METRADOS.json",
+          "path": "C:\\Users\\Mauro\\Downloads\\Manual LECTURA DE PLANOS Y METRADOS.json",
+          "size_bytes": 44645
+        }
+      },
+      "page_count": 68,
+      "pages_with_extracted_text": 68,
+      "character_count_extracted": 35018,
+      "context_summary": "Material de apoyo para interpretar planos de construccion y relacionar la lectura grafica con criterios de metrado.",
+      "recommended_project_use": "Sirve como base metodologica para entender simbolos, escalas, representaciones y extraccion de cantidades desde planos.",
+      "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
+      "important_terms_detected": [
+        "planos",
+        "plano",
+        "medidas",
+        "piso",
+        "metro",
+        "trazo",
+        "tuber",
+        "neas",
+        "sistema",
+        "escala",
+        "visi",
+        "edificaci",
+        "agua",
+        "construcci",
+        "representaci",
+        "planta",
+        "instalaciones",
+        "dise"
+      ],
+      "content_preview": {
+        "first_non_empty_page_excerpt": "CENTRO DE CAPACITACION VELSA GROUP LECTURA DE PLANOS Y METRADOS MANUAL",
+        "middle_page_excerpt": "N.P.T. +6.54 COMEDOR • En cortes y elevaciones: se presenta de manera similar a la planta, pero la cruz no sobresale y además acompaña una flecha vertical, para especificar la ubicación del nivel. 5.6. Otros símbolos arquitectónicos Existen otros símbolos que generalmente se utilizan cuando se hacen planos completos de una edificación: • Numero de ambiente: se representa mediante un número de tres o más dígitos ubicados dentro de un pequeño recuadro, donde los dos números de la derecha representan el piso donde se encuentra ubicado. A1 • Tipo de chapa: se presenta mediante una letra ubicada dentro de un triángulo. 5.7. Rótulos Deben estar en el ángulo inferior derecho de la lámina, con posibilidades de ampliación hacia la izquierda y hacia arriba. Su tamaño está en función de las dimensiones de la lámina. Debe contener las siguientes indicaciones: A 35"
+      }
+    },
+    {
+      "base_name": "norma_metrados",
+      "title": "Norma de metrados",
+      "files": {
+        "pdf": {
+          "name": "norma_metrados.pdf",
+          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.pdf",
+          "size_bytes": 5685998
+        },
+        "txt": {
+          "name": "norma_metrados.txt",
+          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.txt",
+          "size_bytes": 5568
+        },
+        "json": {
+          "name": "norma_metrados.json",
+          "path": "C:\\Users\\Mauro\\Downloads\\norma_metrados.json",
+          "size_bytes": 17845
+        }
+      },
+      "page_count": 167,
+      "pages_with_extracted_text": 0,
+      "character_count_extracted": 166,
+      "context_summary": "Documento normativo o tecnico con criterios para medir partidas y organizar cantidades de obra.",
+      "recommended_project_use": "Sirve para validar reglas de calculo, unidades, alcances y forma de presentar partidas en la tabla de metrados.",
+      "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
+      "important_terms_detected": [],
+      "content_preview": {
+        "first_non_empty_page_excerpt": "",
+        "middle_page_excerpt": ""
+      }
+    },
+    {
+      "base_name": "Costos_y_Presupuestos_CAPECO",
+      "title": "Costos y presupuestos CAPECO",
+      "files": {
+        "pdf": {
+          "name": "Costos_y_Presupuestos_CAPECO.pdf",
+          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.pdf",
+          "size_bytes": 18027974
+        },
+        "txt": {
+          "name": "Costos_y_Presupuestos_CAPECO.txt",
+          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.txt",
+          "size_bytes": 599595
+        },
+        "json": {
+          "name": "Costos_y_Presupuestos_CAPECO.json",
+          "path": "C:\\Users\\Mauro\\Downloads\\Costos_y_Presupuestos_CAPECO.json",
+          "size_bytes": 637548
+        }
+      },
+      "page_count": 375,
+      "pages_with_extracted_text": 359,
+      "character_count_extracted": 555239,
+      "context_summary": "Referencia tecnica sobre costos, presupuestos, analisis y estructura economica de obras de construccion.",
+      "recommended_project_use": "Sirve para vincular metrados con presupuestos, costos unitarios, analisis de partidas y criterios de estimacion.",
+      "generated_txt_description": "Version plana del texto extraido hoja por hoja, con separadores de pagina para lectura rapida y busqueda manual.",
+      "generated_json_description": "Version estructurada del texto extraido: source_file, page_count y pages con page_number, width, height y text.",
+      "important_terms_detected": [
+        "obra",
+        "costo",
+        "total",
+        "equipo",
+        "mano",
+        "capataz",
+        "unitario",
+        "herramientas",
+        "operario",
+        "materiales",
+        "cemento",
+        "madera",
+        "material",
+        "fecha",
+        "cantidad",
+        "unid",
+        "tipo",
+        "construcci"
+      ],
+      "content_preview": {
+        "first_non_empty_page_excerpt": "PRESENTA CION Con la finalidad de atender la solicitud de nuestros asociados y de numerosas personales naturales y jurídicas dedicadas a la construcción, la Cámara Peruana de la Construcción CAPECO, con el objetivo de apoyary fomentar la investigación para el mejoramiento de la actividad de la construcción y fiel a sus principios de vocación de servicio y de capacitación de quienes laboran en el sector, en esta oportunidad tiene el agrado de presentar la nueva edición actualizada de su título No 29 \"Costos y Presupuestos de Edificaciónf1, obra que forma parte de nuestra prestigiosa COL ECCIÓNDEL CONSTRUCTOR. Elpresente título, constituye la octava edición de esta publicación, la cual estamos plenamente convencidos que será de mucha utilidad como una herramienta de consulta necesaria para los estudiantes, profesionales y empresas involucradas en el sector de la construcción. Esta edición",
+        "middle_page_excerpt": "ANALlSlS DE COSTO UNITARIO 1 Obra Hoja NQ : 093 Hecho por Propietario : Ubicación : Revisado por : Fecha PARTIDA NQ : Cielo raso con mezcla -con cintas Unidad : m2 Especlicaclones : Incluye armar, desarmar y transportar andamio. Espesor del revestimiento 1,5 cm. Mezcla de pañateo y cintas 1 : 4, mezcla de revestimiento 1 :5 Cuadrilla : Pañeteo y cintas = 0,l capataz + 1 operario + 0,5 peón Revestimiento = 0,l capataz + 1 operario + 0,5 peón Rendimiento : Para andamio = 116 peón(adiciona1) Pañete0 y cintas: 20 m2ldia. Revestimiento: 6 m2ldia. Para andamio. 20 m21dia Capataz Operario peón I I I \"' I.U. MATERIALES Andamio de madera 1 ~2 1 Total Costo do Miino de Obra EQUIPO, HERRAMIENTAS 1 I 2,16 43 Regla de madera 0,027 43 Clavos de 3\" 02 'a 0,03 37 Parcial 0,257 0,033 Cemento Portland tipo I Arena fina Herramientas 3% M. Obi Precio Unitario Costo de tdaterlal MANO DE OBRA bls m3 Costo de"
+      }
+    }
+  ]
+}
