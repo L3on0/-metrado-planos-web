@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local app data
+outputs/*
+!outputs/.gitkeep
+data/ezdxf_cache/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
