@@ -95,6 +95,7 @@ La carpeta `data/templates/` contiene el formato predeterminado de salida:
 - `metrado_schema.json`: define la hoja de sustento, la hoja resumen, columnas, tipos de dato, unidades permitidas y reglas de agrupacion.
 - `metrado_templates.json`: define formatos especificos por tipo de metrado, como concreto, encofrado, acero, acabados e instalaciones.
 - `specialty_mapping.json`: clasifica partidas por especialidad, grupo normativo, palabras clave, plantilla y unidad por defecto.
+- `capeco_metrado_formats.json`: define la presentacion final tipo CAPECO para metrado general, concreto armado, fierro y revision parametrica.
 
 La aplicacion debe mantener este formato como base para que los metrados sean revisables, comparables y exportables a presupuesto.
 

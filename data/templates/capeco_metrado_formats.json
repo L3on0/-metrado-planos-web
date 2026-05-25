@@ -1,0 +1,114 @@
+{
+  "schema_name": "formatos_capeco_metrado",
+  "version": "1.0.0",
+  "description": "Formatos de presentacion de metrados alineados a las referencias CAPECO: formato general, concreto armado, fierro y revision parametrica.",
+  "source_reference": {
+    "file": "data/references/Costos_y_Presupuestos_CAPECO.txt",
+    "notes": [
+      "Formato general aplicable a partidas, excepto concreto armado.",
+      "Formato diferenciado para metrado de fierro.",
+      "Formato de concreto armado separando concreto, encofrado y fierro.",
+      "Hoja resumen y revision parametrica de metrados."
+    ]
+  },
+  "header_fields": [
+    "obra",
+    "propietario",
+    "plano_no",
+    "hoja_no",
+    "fecha",
+    "hecho_por",
+    "revisado_por"
+  ],
+  "formats": [
+    {
+      "format_id": "capeco_general",
+      "name": "Metrado general CAPECO",
+      "applies_to": [
+        "arquitectura",
+        "acabados",
+        "pisos",
+        "muros",
+        "partidas comunes excepto concreto armado"
+      ],
+      "columns": [
+        {"key": "partida_no", "label": "Partida Nro."},
+        {"key": "especificaciones", "label": "Especificaciones"},
+        {"key": "numero_veces", "label": "Nro. de veces"},
+        {"key": "largo", "label": "Largo"},
+        {"key": "ancho", "label": "Ancho"},
+        {"key": "altura", "label": "Altura"},
+        {"key": "parcial", "label": "Parcial"},
+        {"key": "vanos_numero_veces", "label": "Vanos o disminuciones - Nro. veces"},
+        {"key": "vanos_largo", "label": "Vanos o disminuciones - Largo"},
+        {"key": "vanos_ancho", "label": "Vanos o disminuciones - Ancho"},
+        {"key": "vanos_altura", "label": "Vanos o disminuciones - Altura"},
+        {"key": "vanos_parcial", "label": "Vanos o disminuciones - Parcial"},
+        {"key": "total", "label": "Total"},
+        {"key": "und", "label": "Und"}
+      ]
+    },
+    {
+      "format_id": "capeco_concreto_armado",
+      "name": "Metrado de concreto armado CAPECO",
+      "applies_to": [
+        "zapatas",
+        "columnas",
+        "vigas",
+        "losas",
+        "placas",
+        "escaleras"
+      ],
+      "columns": [
+        {"key": "partida_no", "label": "Partida Nro."},
+        {"key": "elemento", "label": "Elemento"},
+        {"key": "descripcion", "label": "Descripcion"},
+        {"key": "numero_elementos", "label": "Cant. de elementos"},
+        {"key": "largo", "label": "Largo"},
+        {"key": "ancho", "label": "Ancho"},
+        {"key": "altura", "label": "Altura"},
+        {"key": "concreto_total_m3", "label": "Concreto total (m3)"},
+        {"key": "encofrado_total_m2", "label": "Encofrado total (m2)"},
+        {"key": "fierro_total_kg", "label": "Fierro total (kg)"}
+      ]
+    },
+    {
+      "format_id": "capeco_fierro",
+      "name": "Metrado de fierro CAPECO",
+      "applies_to": [
+        "acero",
+        "fierro",
+        "armadura",
+        "refuerzo"
+      ],
+      "columns": [
+        {"key": "partida_no", "label": "Partida Nro."},
+        {"key": "descripcion", "label": "Descripcion"},
+        {"key": "diseno_fierro", "label": "Diseno del fierro"},
+        {"key": "diametro", "label": "Diametro"},
+        {"key": "cantidad", "label": "Cant."},
+        {"key": "longitud", "label": "Longitud"},
+        {"key": "longitud_total", "label": "Longitud total"},
+        {"key": "peso_kg_ml", "label": "Peso kg/ml"},
+        {"key": "total_kg", "label": "Total (kg)"}
+      ]
+    },
+    {
+      "format_id": "capeco_revision_parametrica",
+      "name": "Revision parametrica o densidad de metrados",
+      "applies_to": [
+        "revision",
+        "control",
+        "validacion"
+      ],
+      "columns": [
+        {"key": "concepto", "label": "Concepto"},
+        {"key": "metrado_base", "label": "Metrado base"},
+        {"key": "metrado_comparado", "label": "Metrado comparado"},
+        {"key": "parametro_obra", "label": "Parametro de obra"},
+        {"key": "rango", "label": "Rango"},
+        {"key": "observacion", "label": "Observacion"}
+      ]
+    }
+  ]
+}

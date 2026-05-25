@@ -7,6 +7,7 @@ Esta carpeta define formatos base para generar tablas de metrados de manera cons
 - `metrado_schema.json`: esquema oficial inicial para la hoja de sustento y la hoja resumen.
 - `metrado_templates.json`: plantillas especificas por tipo de metrado y especialidad.
 - `specialty_mapping.json`: mapa de clasificacion por especialidad, grupo normativo, palabras clave, plantilla aplicable y unidad por defecto.
+- `capeco_metrado_formats.json`: formatos de presentacion alineados a CAPECO para metrado general, concreto armado, fierro y revision parametrica.
 
 ## Criterio de uso
 
@@ -34,6 +35,15 @@ Las referencias indican que el metrado cambia segun el area o tipo de partida. P
 - Instalaciones electricas y mecanicas.
 
 La aplicacion debe elegir la plantilla segun la partida detectada o seleccionada por el usuario. Si no puede clasificarla, debe usar `metrado_general`.
+
+## Formato de presentacion CAPECO
+
+Las plantillas de calculo no reemplazan el formato de presentacion. Para entregar metrados revisables, la salida debe usar los formatos de `capeco_metrado_formats.json`, especialmente:
+
+- `capeco_general`: partidas generales y arquitectura/acabados.
+- `capeco_concreto_armado`: concreto, encofrado y fierro por elemento estructural.
+- `capeco_fierro`: detalle de barras, longitudes y peso en kg.
+- `capeco_revision_parametrica`: control de densidades o relaciones entre metrados.
 
 ## Clasificacion por especialidad
 
