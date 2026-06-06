@@ -88,10 +88,12 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
         ) from exc
 
     results: list[Measurement] = []
+    page_count = 0
 
     try:
         if doc.page_count == 0:
             raise ValueError(f"El PDF '{path.name}' no contiene páginas.")
+        page_count = doc.page_count
 
         if doc.page_count > 50:
             logger.warning(f"PDF con {doc.page_count} páginas - puede ser lento de procesar")
@@ -183,5 +185,5 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                        "Puede ser un PDF escaneado (solo imágenes) sin texto vectorial.")
 
     logger.info(f"PDF {path.name}: {len(results)} mediciones extraídas "
-                f"({doc.page_count} páginas)")
+                f"({page_count} páginas)")
     return results
