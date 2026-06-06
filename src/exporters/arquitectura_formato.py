@@ -48,21 +48,136 @@ def _next_id(partida: str) -> str:
     return f"{prefix}-{_ITEM_COUNTERS[prefix]:02d}"
 
 
-def _infer_location(m: Measurement) -> str:
-    """Infere la ubicación de un elemento según coordenadas y capa.
+def _infer_location(m: Measurement, axes: Optional[list] = None) -> str:
+    """Infere la ubicación de un elemento según coordenadas y ejes del plano.
 
-    Si el elemento está cerca de un eje conocido o en un ambiente
-    identificable, lo usa. Como fallback usa coordenadas aproximadas.
+    Args:
+        m: Measurement con coordenadas (coord_x, coord_y).
+        axes: Lista de ejes detectados [(label, x, y, orientation), ...].
+
+    Returns:
+        String con la ubicación (ej: "Eje B/2" o nombre de capa).
     """
-    # Por ahora, usar la capa como referencia de ambiente
+    # Intentar ubicar por ejes
+    if axes and (m.coord_x != 0.0 or m.coord_y != 0.0):
+        return _nearest_axis_label(m.coord_x, m.coord_y, axes)
+
+    # Fallback: extraer nombre descriptivo de la capa
     layer = m.layer
-    # Intentar extraer nombre de ambiente de la capa
-    for kw in ["SALA", "COMEDOR", "COCINA", "SS.HH", "DORM", "HALL",
-               "PASILLO", "OFICINA", "ESTAR", "RECEPCION"]:
-        if kw in layer.upper():
-            return layer
-    # Fallback: coordenadas no disponibles aquí (se pasan desde el procesador)
+    # Limpiar prefijos comunes
+    for prefix in ["0. ", "ARQ ", "ARQ-", "EST ", "EST-"]:
+        if prefix in layer:
+            parts = layer.split(prefix)
+            if len(parts) > 1:
+                return parts[-1].strip()
     return layer
+
+
+# ---------------------------------------------------------------------------
+# Detección de ejes
+# ---------------------------------------------------------------------------
+
+
+def extract_axes(all_measurements: list[Measurement]) -> list[tuple]:
+    """Detecta ejes del plano a partir de mediciones en capas de referencia.
+
+    Busca líneas en capas clasificadas como REF-02 (Ejes) o líneas muy
+    largas que cruzan el dibujo (típicas de ejes).
+
+    Returns:
+        Lista de (label, x, y, orientation) donde orientation es 'V' (vertical)
+        u 'H' (horizontal). label es un número (1,2,3) o letra (A,B,C).
+    """
+    from src.classification import classify_layer
+
+    axis_data: list[tuple] = []
+
+    for m in all_measurements:
+        rule = classify_layer(m.layer)
+        es_eje = rule.partida == "REF-02"
+        es_linea_larga = (
+            m.element_type in ("line", "polyline")
+            and m.quantity > 5.0  # líneas largas = probables ejes
+            and rule.partida != "REF-01"  # no cotas
+        )
+
+        if not (es_eje or es_linea_larga):
+            continue
+
+        # Determinar orientación por diferencia de coordenadas
+        if hasattr(m, 'coord_x') and hasattr(m, 'coord_y'):
+            orient = "V"  # asumir vertical
+            # Si el elemento tiene coordenadas de inicio y fin, calcular
+            # orientación real. Por ahora usar una heurística simple:
+            # las líneas verticales tienen x constante, horizontales y constante
+            # estimar por diferencia
+            dx = abs(m.coord_x) if m.coord_x else 0
+            dy = abs(m.coord_y) if m.coord_y else 0
+            orient = "V" if dx > dy else "H"
+
+            axis_data.append((m.layer, m.coord_x, m.coord_y, orient))
+
+    if not axis_data:
+        return []
+
+    # Agrupar ejes por orientación y ordenar
+    verticales = sorted(
+        [(label, x, y) for label, x, y, o in axis_data if o == "V"],
+        key=lambda t: t[1],  # ordenar por x
+    )
+    horizontales = sorted(
+        [(label, y, x) for label, x, y, o in axis_data if o == "H"],
+        key=lambda t: t[1],  # ordenar por y
+    )
+
+    # Asignar etiquetas: números a verticales, letras a horizontales
+    result: list[tuple] = []
+    for i, (label, x, y) in enumerate(verticales):
+        result.append((str(i + 1), x, y, "V"))
+    for i, (label, y_coord, _) in enumerate(horizontales):
+        result.append((chr(65 + i), 0, y_coord, "H"))  # A, B, C...
+
+    return result
+
+
+def _nearest_axis_label(x: float, y: float, axes: list[tuple]) -> str:
+    """Encuentra el eje vertical y horizontal más cercano a un punto.
+
+    Args:
+        x, y: Coordenadas del elemento.
+        axes: Lista de (label, x_axis, y_axis, orientation).
+
+    Returns:
+        String "Eje {horizontal}/{vertical}" (ej: "Eje B/2").
+    """
+    nearest_v: tuple[float, str] = (float("inf"), "?")
+    nearest_h: tuple[float, str] = (float("inf"), "?")
+
+    for label, ax, ay, orient in axes:
+        if orient == "V":
+            dist = abs(x - ax)
+            if dist < nearest_v[0]:
+                nearest_v = (dist, label)
+        else:
+            dist = abs(y - ay)
+            if dist < nearest_h[0]:
+                nearest_h = (dist, label)
+
+    near_v_label = nearest_v[1] if nearest_v[1] != "?" else ""
+    near_h_label = nearest_h[1] if nearest_h[1] != "?" else ""
+
+    near_v_dist = nearest_v[0]
+    near_h_dist = nearest_h[0]
+
+    # Si no hay ejes cercanos, devolver coordenadas planas
+    if near_v_dist > 50 and near_h_dist > 50:
+        return f"~({x:.1f}, {y:.1f})"
+    if near_v_dist > 50:
+        return f"Eje {near_h_label}"
+    if near_h_dist > 50:
+        return f"Eje {near_v_label}"
+
+    return f"Eje {near_h_label}/{near_v_label}"
 
 
 # ---------------------------------------------------------------------------
@@ -93,6 +208,9 @@ def measurements_to_arquitectura(measurements: list[Measurement]) -> list[ItemAr
     _reset_counters()
     items: list[ItemArquitectura] = []
 
+    # Detectar ejes del plano
+    axes = extract_axes(measurements)
+
     for m in measurements:
         rule = classify_layer(m.layer)
         partida = rule.partida
@@ -104,7 +222,7 @@ def measurements_to_arquitectura(measurements: list[Measurement]) -> list[ItemAr
 
         if es_contable:
             item_id = _next_id(partida)
-            ubicacion = _infer_location(m)
+            ubicacion = _infer_location(m, axes)
             # Determinar dimensiones aproximadas si están disponibles
             largo = m.quantity if m.unit == "m" else None
             ancho = None

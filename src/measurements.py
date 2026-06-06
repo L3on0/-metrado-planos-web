@@ -21,6 +21,8 @@ class Measurement:
     unit: str
     description: str
     confidence: float = 0.7
+    coord_x: float = 0.0
+    coord_y: float = 0.0
 
 
 @dataclass(frozen=True)
