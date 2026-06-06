@@ -139,3 +139,57 @@ class TestClassify:
         m = Measurement("DXF", "COTA-DIMENSION", "line", 5, "m", "", 0.5)
         p, d, c = classify(m)
         assert "REF" in p
+
+
+class TestNoiseFilter:
+    """Tests de filtros de ruido (tamaño mínimo, duplicados)."""
+
+    def test_should_filter_short_line(self):
+        from src.measurements import should_filter_by_size
+        assert should_filter_by_size(0.05, "m") is True
+        assert should_filter_by_size(0.50, "m") is False
+        assert should_filter_by_size(0.10, "m") is False  # = MIN, no filtra
+
+    def test_should_filter_small_area(self):
+        from src.measurements import should_filter_by_size
+        assert should_filter_by_size(0.001, "m2") is True
+        assert should_filter_by_size(0.10, "m2") is False
+
+    def test_filter_noise_removes_small(self):
+        from src.measurements import filter_noise
+        ms = [
+            Measurement("DXF", "MUROS", "line", 0.05, "m", "", 0.9),  # muy corta
+            Measurement("DXF", "MUROS", "line", 5.0, "m", "", 0.9),   # ok
+        ]
+        result = filter_noise(ms)
+        assert len(result) == 1
+        assert result[0].quantity == 5.0
+
+    def test_filter_noise_dedup(self):
+        from src.measurements import filter_noise
+        ms = [
+            Measurement("DXF", "MUROS", "line", 5.0, "m", "", 0.9),
+            Measurement("DXF", "MUROS", "line", 5.02, "m", "", 0.9),  # duplicado
+        ]
+        result = filter_noise(ms)
+        assert len(result) == 1
+
+    def test_build_metrado_applies_filter(self):
+        from src.measurements import build_metrado
+        ms = [
+            Measurement("DXF", "MUROS", "line", 0.05, "m", "", 0.9),  # ruido
+            Measurement("DXF", "MUROS", "line", 5.0, "m", "", 0.9),
+        ]
+        items = build_metrado(ms, apply_noise_filter=True)
+        assert len(items) == 1
+        assert items[0].cantidad == 5.0
+
+    def test_build_metrado_no_filter(self):
+        from src.measurements import build_metrado
+        ms = [
+            Measurement("DXF", "MUROS", "line", 0.05, "m", "", 0.9),
+            Measurement("DXF", "MUROS", "line", 5.0, "m", "", 0.9),
+        ]
+        items = build_metrado(ms, apply_noise_filter=False)
+        assert len(items) == 1  # siguen agrupándose en 1 item
+        assert items[0].cantidad == 5.05  # suma ambas

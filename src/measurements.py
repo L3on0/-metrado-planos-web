@@ -58,15 +58,25 @@ def classify(measurement: Measurement) -> tuple[str, str, str]:
 
 
 def build_metrado(measurements: Iterable[Measurement],
-                  include_reference: bool = False) -> list[MetradoItem]:
+                  include_reference: bool = False,
+                  apply_noise_filter: bool = True) -> list[MetradoItem]:
     """Agrupa mediciones por partida y devuelve items de metrado.
+
+    Args:
+        measurements: Mediciones a agrupar.
+        include_reference: Si True, incluye elementos de referencia.
+        apply_noise_filter: Si True, elimina mediciones demasiado pequeñas y duplicadas.
 
     Por defecto filta elementos de referencia (cotas, ejes, texto…).
     Pasar ``include_reference=True`` para incluirlos.
     """
+    all_m = list(measurements)
+    if apply_noise_filter:
+        all_m = filter_noise(all_m)
+
     grouped: dict[tuple[str, str, str], list[Measurement]] = {}
 
-    for measurement in measurements:
+    for measurement in all_m:
         partida, descripcion, categoria = classify(measurement)
         if not include_reference and categoria == CAT_REFERENCE:
             continue
@@ -93,13 +103,18 @@ def build_metrado(measurements: Iterable[Measurement],
 
 
 def measurements_to_rows(measurements: Iterable[Measurement],
-                         include_reference: bool = False) -> list[dict]:
+                         include_reference: bool = False,
+                         apply_noise_filter: bool = True) -> list[dict]:
     """Convierte mediciones a filas planas para mostrar en tabla.
 
     Por defecto excluye elementos de referencia.
     """
+    all_m = list(measurements)
+    if apply_noise_filter:
+        all_m = filter_noise(all_m)
+
     rows = []
-    for m in measurements:
+    for m in all_m:
         _partida, _desc, categoria = classify(m)
         if not include_reference and categoria == CAT_REFERENCE:
             continue
@@ -118,3 +133,54 @@ def measurements_to_rows(measurements: Iterable[Measurement],
 
 # Mantener compatibilidad hacia atrás
 infer_partida = classify
+
+
+# ---------------------------------------------------------------------------
+# Filtros de ruido
+# ---------------------------------------------------------------------------
+
+MIN_LENGTH_M = 0.10    # metros — ignorar líneas más cortas
+MIN_AREA_M2 = 0.01     # metros² — ignorar áreas más pequeñas
+_LENGTH_TOLERANCE = 0.05  # tolerancia 5% para detección de duplicados
+
+
+def should_filter_by_size(quantity: float, unit: str) -> bool:
+    """Determina si una medición debe filtrarse por ser demasiado pequeña.
+
+    Args:
+        quantity: Valor numérico de la medición.
+        unit: Unidad ('m', 'm2', 'und', etc.).
+
+    Returns:
+        True si la medición es demasiado pequeña para ser significativa.
+    """
+    if unit == "m" and quantity < MIN_LENGTH_M:
+        return True
+    if unit == "m2" and quantity < MIN_AREA_M2:
+        return True
+    return False
+
+
+def filter_noise(measurements: list[Measurement]) -> list[Measurement]:
+    """Filtra mediciones ruidosas: demasiado pequeñas o duplicadas.
+
+    Args:
+        measurements: Lista de mediciones.
+
+    Returns:
+        Lista filtrada.
+    """
+    # 1. Filtrar por tamaño
+    filtered = [m for m in measurements if not should_filter_by_size(m.quantity, m.unit)]
+
+    # 2. Detectar duplicados (misma capa + tipo + longitud similar)
+    seen: set[tuple] = set()
+    deduped: list[Measurement] = []
+    for m in filtered:
+        rounded = round(m.quantity / _LENGTH_TOLERANCE) * _LENGTH_TOLERANCE
+        key = (m.layer, m.element_type, m.source, rounded)
+        if key not in seen:
+            seen.add(key)
+            deduped.append(m)
+
+    return deduped
