@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  metrados:
+    build: .
+    container_name: sas-metrados
+    ports:
+      - "8501:8501"
+    volumes:
+      # Para procesar DWG, montar acceso a AutoCAD (opcional, Windows only)
+      # - //./pipe:/tmp/.pipe  # named pipe para COM
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+    environment:
+      - TESSDATA_PREFIX=/usr/share/tesseract-ocr/5/tessdata
+    restart: unless-stopped
