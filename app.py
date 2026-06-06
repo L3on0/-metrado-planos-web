@@ -152,18 +152,123 @@ with tabs[0]:
     else:
         st.info("Presiona `Analizar plano` para ver el diagnóstico.")
 
-# ---- Tab 1: Metrado ----
+# ---- Tab 1: Metrado (editable) ----
 with tabs[1]:
-    if "capeco_metrado_items" in st.session_state:
-        items = st.session_state["capeco_metrado_items"]
-        st.subheader("Metrado generado")
-        if items:
-            df = pd.DataFrame([it.as_dict() for it in items])
-            st.dataframe(df, use_container_width=True, hide_index=True)
-        else:
-            st.info("No se encontraron elementos metrables después de filtrar referencias.")
-    else:
+    if "capeco_metrado_items" not in st.session_state:
         st.info("Presiona `Analizar plano` para generar el metrado.")
+    else:
+        items = st.session_state["capeco_metrado_items"]
+
+        # Inicializar estado de correcciones
+        if "metrado_excluded" not in st.session_state:
+            st.session_state["metrado_excluded"] = set()
+        if "metrado_overrides" not in st.session_state:
+            st.session_state["metrado_overrides"]: dict[int, dict] = {}
+        if "metrado_manual_items" not in st.session_state:
+            st.session_state["metrado_manual_items"]: list[MetradoItem] = []
+
+        # ---- Mostrar items con controles ----
+        st.subheader(f"Metrado ({len(items)} partidas)")
+
+        for i, item in enumerate(items):
+            excluded = i in st.session_state["metrado_excluded"]
+            overrides = st.session_state["metrado_overrides"].get(i, {})
+
+            cols = st.columns([0.5, 1.5, 3, 1, 1.5, 1])
+            with cols[0]:
+                excl = st.checkbox("", value=excluded, key=f"excl_{i}",
+                                   label_visibility="collapsed")
+                if excl and not excluded:
+                    st.session_state["metrado_excluded"].add(i)
+                elif not excl and excluded:
+                    st.session_state["metrado_excluded"].discard(i)
+            with cols[1]:
+                partida_opts = [
+                    "ARQ-01", "ARQ-02", "ARQ-03", "ARQ-04", "ARQ-05", "ARQ-06",
+                    "ARQ-07", "ARQ-08", "ARQ-09", "ARQ-10", "ARQ-11",
+                    "EST-01", "EST-02", "EST-03", "EST-04", "EST-05", "EST-06", "EST-07", "EST-08",
+                    "ISS-01", "ISS-02", "ISS-03", "ISS-04",
+                    "ISE-01", "ISE-02", "ISE-03", "ISE-04",
+                    "VAR-01", "VAR-02", "VAR-03",
+                ]
+                pid = overrides.get("partida", item.partida)
+                try:
+                    idx = partida_opts.index(pid)
+                except ValueError:
+                    partida_opts.insert(0, pid)
+                    idx = 0
+                new_pid = st.selectbox(
+                    "", partida_opts, index=idx, key=f"pid_{i}",
+                    label_visibility="collapsed",
+                )
+                if new_pid != item.partida:
+                    st.session_state["metrado_overrides"].setdefault(i, {})["partida"] = new_pid
+                elif "partida" in st.session_state["metrado_overrides"].get(i, {}):
+                    del st.session_state["metrado_overrides"][i]["partida"]
+
+            with cols[2]:
+                new_desc = st.text_input(
+                    "", value=overrides.get("descripcion", item.descripcion),
+                    key=f"desc_{i}", label_visibility="collapsed",
+                )
+                if new_desc != item.descripcion:
+                    st.session_state["metrado_overrides"].setdefault(i, {})["descripcion"] = new_desc
+            with cols[3]:
+                new_qty = st.number_input(
+                    "", value=overrides.get("cantidad", item.cantidad),
+                    format="%.3f", key=f"qty_{i}", label_visibility="collapsed",
+                )
+                if new_qty != item.cantidad:
+                    st.session_state["metrado_overrides"].setdefault(i, {})["cantidad"] = new_qty
+            with cols[4]:
+                st.markdown(f"**{item.unidad}**")
+            with cols[5]:
+                apply_corrections_func = st.button("🔄", key=f"apply_{i}",
+                                                    help="Aplicar cambios a esta fila",
+                                                    use_container_width=True)
+            if excluded:
+                st.markdown(f"<span style='color:#ef4444;font-size:0.8em'>❌ Excluido</span>",
+                            unsafe_allow_html=True)
+
+        # ---- Botón recalcular ----
+        has_changes = (
+            st.session_state["metrado_excluded"]
+            or st.session_state["metrado_overrides"]
+            or st.session_state["metrado_manual_items"]
+        )
+        if has_changes:
+            if st.button("🔄 Recalcular metrado con correcciones",
+                         type="primary", use_container_width=True):
+                from src.measurements import apply_corrections
+                corrected = apply_corrections(
+                    items,
+                    st.session_state["metrado_excluded"],
+                    st.session_state["metrado_overrides"],
+                )
+                corrected.extend(st.session_state["metrado_manual_items"])
+                st.session_state["capeco_metrado_items"] = corrected
+                st.rerun()
+
+        # ---- Añadir partida manual ----
+        st.divider()
+        with st.expander("➕ Añadir partida manual"):
+            man_pid = st.selectbox("Partida", partida_opts, key="man_pid")
+            man_desc = st.text_input("Descripción", key="man_desc")
+            man_qty = st.number_input("Cantidad", min_value=0.0, step=0.01, key="man_qty")
+            man_unit = st.selectbox("Unidad", ["m", "m2", "und", "kg", "glb"], key="man_unit")
+            if st.button("Añadir al metrado", use_container_width=True):
+                manual = MetradoItem(
+                    partida=man_pid,
+                    descripcion=man_desc or "Partida manual",
+                    unidad=man_unit,
+                    cantidad=man_qty,
+                    fuente="Manual",
+                    confianza=1.0,
+                )
+                st.session_state["metrado_manual_items"].append(manual)
+                all_items = list(items) + st.session_state["metrado_manual_items"]
+                st.session_state["capeco_metrado_items"] = all_items
+                st.rerun()
 
 # ---- Tab 2: Mediciones base ----
 with tabs[2]:

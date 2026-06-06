@@ -188,3 +188,35 @@ def filter_noise(measurements: list[Measurement]) -> list[Measurement]:
             deduped.append(m)
 
     return deduped
+
+
+def apply_corrections(items: list[MetradoItem],
+                      excluded: set[int],
+                      overrides: dict[int, dict]) -> list[MetradoItem]:
+    """Aplica correcciones manuales a una lista de MetradoItem.
+
+    Args:
+        items: Lista original de items.
+        excluded: Índices de items excluidos.
+        overrides: Dict {index: {campo: valor}} con sobreescrituras.
+
+    Returns:
+        Lista filtrada y modificada.
+    """
+    result = []
+    for i, item in enumerate(items):
+        if i in excluded:
+            continue
+        if i in overrides:
+            opts = overrides[i]
+            result.append(MetradoItem(
+                partida=opts.get("partida", item.partida),
+                descripcion=opts.get("descripcion", item.descripcion),
+                unidad=opts.get("unidad", item.unidad),
+                cantidad=opts.get("cantidad", item.cantidad),
+                fuente=f"Manual|{item.fuente}",
+                confianza=opts.get("confianza", item.confianza),
+            ))
+        else:
+            result.append(item)
+    return result

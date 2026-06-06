@@ -193,3 +193,26 @@ class TestNoiseFilter:
         items = build_metrado(ms, apply_noise_filter=False)
         assert len(items) == 1  # siguen agrupándose en 1 item
         assert items[0].cantidad == 5.05  # suma ambas
+
+
+class TestApplyCorrections:
+    """Tests de apply_corrections()."""
+
+    def test_exclude_item(self):
+        from src.measurements import apply_corrections
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = apply_corrections(items, {0}, {})
+        assert len(result) == 0
+
+    def test_override_partida(self):
+        from src.measurements import apply_corrections
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = apply_corrections(items, set(), {0: {"partida": "EST-01"}})
+        assert result[0].partida == "EST-01"
+        assert result[0].descripcion == "Muros"  # no cambia
+
+    def test_override_cantidad(self):
+        from src.measurements import apply_corrections
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = apply_corrections(items, set(), {0: {"cantidad": 15.5}})
+        assert result[0].cantidad == 15.5
