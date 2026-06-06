@@ -114,33 +114,53 @@ tabs = st.tabs(["Diagnóstico", "Metrado", "Mediciones base", "Descargas"])
 
 # ---- Tab 0: Diagnóstico ----
 with tabs[0]:
-    if "measurements" in st.session_state:
+    if "measurements" not in st.session_state:
+        st.info("Presiona `Analizar plano` para ver el diagnóstico.")
+    else:
         ms = st.session_state["measurements"]
-        from src.classification import filter_reference, classify_layer
+        from src.classification import classify_layer
 
+        # ---- Métricas principales ----
         structural = [m for m in ms if classify_layer(m.layer).category == "structural"]
         reference = [m for m in ms if classify_layer(m.layer).category != "structural"]
+        items = st.session_state.get("capeco_metrado_items", [])
 
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("Mediciones totales", len(ms))
-        c2.metric("Estructurales", len(structural))
-        c3.metric("Referencia (excluídas)", len(reference))
-        c4.metric("Partidas", len(st.session_state.get("capeco_metrado_items", [])))
+        st.subheader("Resumen del análisis")
+        mc1, mc2, mc3, mc4, mc5 = st.columns(5)
+        mc1.metric("Mediciones totales", len(ms))
+        mc2.metric("Estructurales", len(structural))
+        mc3.metric("Referencia", len(reference))
+        mc4.metric("Partidas", len(items))
+        mc5.metric("Ruido eliminado",
+                   len(ms) - len(structural) - len(reference),
+                   help="Mediciones demasiado pequeñas o duplicadas")
 
-        # Desglose por capa
-        st.subheader("Distribución por capa")
+        # ---- Distribución por tipo de entidad ----
+        st.subheader("Distribución por tipo de entidad")
         from collections import Counter
+        type_counts = Counter(m.element_type for m in ms)
+        type_df = pd.DataFrame(
+            type_counts.most_common(),
+            columns=["Tipo de entidad", "Cantidad"],
+        )
+        st.dataframe(type_df, use_container_width=True, hide_index=True)
+
+        # ---- Desglose por capa ----
+        st.subheader("Distribución por capa")
         layer_counts = Counter(m.layer for m in ms)
         layer_df = pd.DataFrame(
-            layer_counts.most_common(20),
+            layer_counts.most_common(25),
             columns=["Capa", "Entidades"],
         )
         layer_df["Clasificación"] = layer_df["Capa"].apply(
             lambda l: f"{classify_layer(l).partida} - {classify_layer(l).descripcion}"
         )
+        layer_df["Categoría"] = layer_df["Capa"].apply(
+            lambda l: "🔴 Referencia" if classify_layer(l).category != "structural" else "🟢 Estructural"
+        )
         st.dataframe(layer_df, use_container_width=True, hide_index=True)
 
-        # Capas no reconocidas
+        # ---- Capas no reconocidas ----
         unknown = [
             (layer, count) for layer, count in layer_counts.items()
             if classify_layer(layer).partida == "GEN-01"
@@ -148,10 +168,25 @@ with tabs[0]:
         if unknown:
             st.warning(
                 f"⚠️ **{len(unknown)} capas no reconocidas:** "
-                + ", ".join(f"`{l}` ({c})" for l, c in unknown[:10])
+                + ", ".join(f"`{l}` ({c} entidades)" for l, c in unknown[:10])
             )
-    else:
-        st.info("Presiona `Analizar plano` para ver el diagnóstico.")
+        else:
+            st.success("✅ Todas las capas fueron reconocidas correctamente.")
+
+        # ---- Información del archivo ----
+        archivo = st.session_state.get("last_name", "—")
+        fuente = set(m.source for m in ms)
+        st.subheader("Información del archivo")
+        info_data = [
+            ("Archivo", archivo),
+            ("Formato", ", ".join(sorted(fuente))),
+            ("Total entidades leídas", str(len(ms))),
+            ("Estructurales (incluidas)", str(len(structural))),
+            ("Referencia (excluídas)", str(len(reference))),
+            ("Partidas generadas", str(len(items))),
+        ]
+        info_df = pd.DataFrame(info_data, columns=["Campo", "Valor"])
+        st.dataframe(info_df, use_container_width=True, hide_index=True)
 
 # ---- Tab 1: Metrado (editable) ----
 with tabs[1]:
