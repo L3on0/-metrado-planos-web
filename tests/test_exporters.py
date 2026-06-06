@@ -74,3 +74,43 @@ class TestPDFExporter:
             MetradoItem("ARQ-01", "Solo un muro", "m", 10, "DXF", 0.9)
         ], "simple.dxf")
         assert len(result) > 500
+
+
+class TestS10Exporter:
+    """Tests del exportador S10."""
+
+    def test_build_csv(self):
+        from src.exporters.s10_exporter import build_csv
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = build_csv(items, "test.dxf", "Arquitectura")
+        assert isinstance(result, bytes)
+        assert result.startswith(b"\xef\xbb\xbf")  # UTF-8 BOM
+        assert "Código".encode() in result
+        assert "ARQ-01".encode() in result
+
+    def test_build_s10(self):
+        from src.exporters.s10_exporter import build_s10
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = build_s10(items, "test.dxf")
+        assert b"S10-MET v1.0" in result
+        assert b"ARQ-01" in result
+        assert b"PARTIDAS:1" in result
+
+    def test_build_s10_excel(self):
+        from src.exporters.s10_exporter import build_s10_excel
+        items = [MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9)]
+        result = build_s10_excel(items, "test.dxf")
+        assert len(result) > 500
+
+    def test_multiple_items_csv(self):
+        from src.exporters.s10_exporter import build_csv
+        items = [
+            MetradoItem("ARQ-01", "Muros", "m", 10, "DXF", 0.9),
+            MetradoItem("EST-01", "Columnas", "und", 4, "DWG", 0.85),
+        ]
+        result = build_csv(items)
+        decoded = result.decode("utf-8-sig")
+        lines = decoded.strip().split("\n")
+        # Una línea por item
+        data_lines = [l for l in lines if l and not l.startswith("#")]
+        assert len(data_lines) >= 3  # header row + 2 items

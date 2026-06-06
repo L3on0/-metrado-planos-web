@@ -19,6 +19,7 @@ from src.exporters.capeco_tables import (
 )
 from src.exporters.excel_exporter import build_excel, build_simple_excel
 from src.exporters.pdf_exporter import build_pdf
+from src.exporters.s10_exporter import build_csv, build_s10, build_s10_excel
 from src.measurements import Measurement, MetradoItem, build_metrado, measurements_to_rows
 from src.processors.autocad_processor import extract_dwg_measurements
 from src.processors.dxf_processor import extract_dxf_measurements
@@ -313,6 +314,36 @@ with tabs[3]:
             pdf_bytes,
             file_name=f"metrado_{Path(uploaded.name).stem}.pdf",
             mime="application/pdf",
+            use_container_width=True,
+        )
+
+        # S10 / CSV
+        csv_bytes = build_csv(items, proyecto, specialty)
+        st.download_button(
+            "📥 Descargar CSV para S10/Excel",
+            csv_bytes,
+            file_name=f"metrado_{Path(uploaded.name).stem}.csv",
+            mime="text/csv",
+            use_container_width=True,
+        )
+
+        # S10 texto
+        s10_bytes = build_s10(items, proyecto, specialty)
+        st.download_button(
+            "📥 Descargar S10 (.s10)",
+            s10_bytes,
+            file_name=f"metrado_{Path(uploaded.name).stem}.s10",
+            mime="text/plain",
+            use_container_width=True,
+        )
+
+        # S10 Excel
+        s10_xl_bytes = build_s10_excel(items, proyecto)
+        st.download_button(
+            "📥 Descargar Excel S10",
+            s10_xl_bytes,
+            file_name=f"metrado_S10_{Path(uploaded.name).stem}.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             use_container_width=True,
         )
 
