@@ -180,6 +180,46 @@ def classify_measurement(layer: str, element_type: str,
 # Utilidad: filtrar mediciones
 # ---------------------------------------------------------------------------
 
+# Partidas que se cuentan por unidad (und) en lugar de medir (m/m2)
+_COUNTABLE_PARTIDAS = frozenset({
+    "ARQ-05",  # Puertas y marcos
+    "ARQ-06",  # Ventanas y vidrios
+    "ARQ-08",  # Barandas y pasamanos
+    "EST-01",  # Columnas
+    "EST-02",  # Vigas
+    "ISS-03",  # Aparatos sanitarios
+    "ISE-02",  # Tomacorrientes e interruptores
+    "ISE-04",  # Tableros eléctricos
+})
+
+
+def infer_unit(partida: str, element_type: str) -> str:
+    """Infere la unidad de medida según la partida y el tipo de entidad.
+
+    Args:
+        partida: Código de partida (ej: ``ARQ-05``).
+        element_type: Tipo de entidad (ej: ``closed_polyline``, ``line``).
+
+    Returns:
+        'und', 'm', o 'm2' según corresponda.
+    """
+    is_countable = partida in _COUNTABLE_PARTIDAS
+
+    if is_countable:
+        # Elementos contables: closed_polyline o circle = 1 unidad
+        if element_type in ("closed_polyline", "circle_area", "circle_perimeter"):
+            return "und"
+        # Si es una línea en un elemento contable, medir longitud
+        return "m"
+
+    # Elementos medibles
+    if element_type.endswith("_area") or element_type == "closed_polyline":
+        return "m2"
+    # Perímetros de círculo en elementos estructurales = m
+    if element_type == "circle_perimeter":
+        return "m"
+    return "m"
+
 def filter_structural(measurements: list) -> list:
     """Filtra una lista de objetos Measurement, quedándose solo con los
     que pertenecen a capas estructurales.

@@ -9,7 +9,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from src.classification import is_structural
+from src.classification import is_structural, classify_layer, infer_unit
 from src.log_utils import get_logger, format_exception
 from src.measurements import Measurement
 
@@ -131,8 +131,10 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                 dy = end.y - start.y
                 length = ((dx * dx + dy * dy) ** 0.5) * scale_factor
                 if length > 0:
+                    partida = classify_layer(layer).partida
+                    unit = infer_unit(partida, "line")
                     results.append(
-                        Measurement("DXF", layer, "line", length, "m", "Linea detectada", 0.9)
+                        Measurement("DXF", layer, "line", length, unit, "Linea detectada", 0.9)
                     )
 
             elif dxftype in {"LWPOLYLINE", "POLYLINE"}:
@@ -144,32 +146,46 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                     is_closed = entity.is_closed
 
                 if len(points) >= 2:
+                    partida = classify_layer(layer).partida
                     length = _polyline_length(points)
                     if is_closed:
                         length += _polyline_length([points[-1], points[0]]) if len(points) > 1 else 0.0
                         area = _polygon_area(points) * (scale_factor**2)
                         if area > 0:
+                            area_unit = infer_unit(partida, "closed_polyline")
+                            area_qty = 1.0 if area_unit == "und" else area
                             results.append(
-                                Measurement("DXF", layer, "closed_polyline", area, "m2",
+                                Measurement("DXF", layer, "closed_polyline", area_qty, area_unit,
                                             "Polilinea cerrada", 0.85)
                             )
-                    results.append(
-                        Measurement("DXF", layer, "polyline", length * scale_factor, "m",
-                                    "Polilinea detectada", 0.85)
-                    )
+                    # Para elementos contables (und), no crear medición de perímetro
+                    if not (is_closed and infer_unit(partida, "closed_polyline") == "und"):
+                        poly_unit = infer_unit(partida, "polyline")
+                        poly_qty = 1.0 if poly_unit == "und" else length * scale_factor
+                        results.append(
+                            Measurement("DXF", layer, "polyline", poly_qty, poly_unit,
+                                        "Polilinea detectada", 0.85)
+                        )
 
             elif dxftype == "CIRCLE":
+                partida = classify_layer(layer).partida
                 radius = entity.dxf.radius * scale_factor
                 perimeter = 2 * 3.141592653589793 * radius
                 area = 3.141592653589793 * radius * radius
-                results.append(
-                    Measurement("DXF", layer, "circle_perimeter", perimeter, "m",
-                                "Perimetro de circulo", 0.8)
-                )
-                results.append(
-                    Measurement("DXF", layer, "circle_area", area, "m2",
-                                "Area de circulo", 0.8)
-                )
+                perm_unit = infer_unit(partida, "circle_perimeter")
+                area_unit = infer_unit(partida, "circle_area")
+                perm_qty = 1.0 if perm_unit == "und" else perimeter
+                area_qty = 1.0 if area_unit == "und" else area
+                if perm_unit == "und" or perm_qty > 0:
+                    results.append(
+                        Measurement("DXF", layer, "circle_perimeter", perm_qty, perm_unit,
+                                    "Perimetro de circulo", 0.8)
+                    )
+                if area_unit == "und" or area_qty > 0:
+                    results.append(
+                        Measurement("DXF", layer, "circle_area", area_qty, area_unit,
+                                    "Area de circulo", 0.8)
+                    )
 
         except Exception as exc:
             errors += 1

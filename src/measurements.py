@@ -174,9 +174,13 @@ def filter_noise(measurements: list[Measurement]) -> list[Measurement]:
     filtered = [m for m in measurements if not should_filter_by_size(m.quantity, m.unit)]
 
     # 2. Detectar duplicados (misma capa + tipo + longitud similar)
+    #    No deduplicar elementos contados por unidad (und) — cada uno es único
     seen: set[tuple] = set()
     deduped: list[Measurement] = []
     for m in filtered:
+        if m.unit == "und":
+            deduped.append(m)
+            continue
         rounded = round(m.quantity / _LENGTH_TOLERANCE) * _LENGTH_TOLERANCE
         key = (m.layer, m.element_type, m.source, rounded)
         if key not in seen:

@@ -100,20 +100,30 @@ class TestExtractDXF:
             tmp.unlink()
 
     def test_extract_with_custom_layer(self):
-        """Crea un DXF con entidades en capas estructurales."""
+        """Crea un DXF con entidades en capas estructurales y verifica unidades."""
         tmp = Path(tempfile.mktemp(suffix=".dxf"))
         doc = ezdxf.new("R2010")
         msp = doc.modelspace()
         msp.add_line((0, 0), (10, 0), dxfattribs={"layer": "MUROS"})
+        # Círculo en COLUMNAS = contable → und
         msp.add_circle((5, 5), 2, dxfattribs={"layer": "COLUMNAS-C1"})
-        msp.add_lwpolyline([(0, 0), (5, 0), (5, 5)], dxfattribs={"layer": "MUROS"})
+        # Puerta = contable
+        rect = [(0, 0), (1, 0), (1, 2.1), (0, 2.1)]
+        msp.add_lwpolyline(rect, close=True, dxfattribs={"layer": "PUERTAS-PA-01"})
         doc.saveas(str(tmp))
         try:
             results = extract_dxf_measurements(tmp)
-            # MUROS: 1 línea + 1 polilínea abierta = 2 mediciones
-            # COLUMNAS: 1 círculo (perímetro + área) = 2 mediciones
-            # Total: 4
-            assert len(results) == 4
+            # MUROS: 1 línea → unit=m
+            line_measurements = [r for r in results if r.layer == "MUROS"]
+            assert all(r.unit == "m" for r in line_measurements), "MUROS debe ser m"
+            # COLUMNAS: círculo → unit=und
+            col_measurements = [r for r in results if r.layer == "COLUMNAS-C1"]
+            assert all(r.unit == "und" for r in col_measurements), "COLUMNAS debe ser und"
+            assert all(r.quantity == 1.0 for r in col_measurements), "COLUMNAS qty=1"
+            # PUERTAS: polilínea cerrada → unit=und
+            door_measurements = [r for r in results if r.layer == "PUERTAS-PA-01"]
+            assert all(r.unit == "und" for r in door_measurements), "PUERTAS debe ser und"
+            assert len(results) == 4  # 1 línea + 2 círculo + 1 puerta
         finally:
             tmp.unlink()
 

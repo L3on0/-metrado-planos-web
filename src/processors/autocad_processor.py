@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from src.classification import is_structural
+from src.classification import is_structural, classify_layer, infer_unit
 from src.log_utils import get_logger, format_exception
 from src.measurements import Measurement
 
@@ -98,43 +98,66 @@ def extract_dwg_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                     continue
 
                 if object_name.endswith("AcDbLine"):
+                    partida = classify_layer(layer).partida
                     start = entity.StartPoint
                     end = entity.EndPoint
                     dx = end[0] - start[0]
                     dy = end[1] - start[1]
                     length = ((dx * dx + dy * dy) ** 0.5) * scale_factor
                     if length > 0:
+                        unit = infer_unit(partida, "line")
                         results.append(
-                            Measurement("DWG", layer, "line", length, "m",
+                            Measurement("DWG", layer, "line", length, unit,
                                         "Linea AutoCAD", 0.9)
                         )
 
                 elif object_name.endswith("AcDbPolyline") or object_name.endswith("AcDb2dPolyline"):
+                    partida = classify_layer(layer).partida
                     length = float(entity.Length) * scale_factor
-                    if length > 0:
-                        results.append(
-                            Measurement("DWG", layer, "polyline", length, "m",
-                                        "Polilinea AutoCAD", 0.85)
-                        )
                     area = float(getattr(entity, "Area", 0) or 0) * (scale_factor**2)
-                    if area > 0:
+                    has_area = area > 0
+
+                    # Para elementos contables con área, solo crear medición de und
+                    if has_area and infer_unit(partida, "closed_polyline") == "und":
                         results.append(
-                            Measurement("DWG", layer, "closed_polyline", area, "m2",
-                                        "Area AutoCAD", 0.85)
+                            Measurement("DWG", layer, "closed_polyline", 1.0, "und",
+                                        "Elemento contabilizado", 0.85)
                         )
+                    else:
+                        if length > 0:
+                            poly_unit = infer_unit(partida, "polyline")
+                            poly_qty = 1.0 if poly_unit == "und" else length
+                            results.append(
+                                Measurement("DWG", layer, "polyline", poly_qty, poly_unit,
+                                            "Polilinea AutoCAD", 0.85)
+                            )
+                        if has_area:
+                            area_unit = infer_unit(partida, "closed_polyline")
+                            area_qty = 1.0 if area_unit == "und" else area
+                            results.append(
+                                Measurement("DWG", layer, "closed_polyline", area_qty, area_unit,
+                                            "Area AutoCAD", 0.85)
+                            )
 
                 elif object_name.endswith("AcDbCircle"):
+                    partida = classify_layer(layer).partida
                     radius = float(entity.Radius) * scale_factor
                     perimeter = 2 * 3.141592653589793 * radius
                     area = 3.141592653589793 * radius * radius
-                    results.append(
-                        Measurement("DWG", layer, "circle_perimeter", perimeter, "m",
-                                    "Circulo AutoCAD", 0.8)
-                    )
-                    results.append(
-                        Measurement("DWG", layer, "circle_area", area, "m2",
-                                    "Circulo AutoCAD", 0.8)
-                    )
+                    perm_unit = infer_unit(partida, "circle_perimeter")
+                    area_unit = infer_unit(partida, "circle_area")
+                    perm_qty = 1.0 if perm_unit == "und" else perimeter
+                    area_qty = 1.0 if area_unit == "und" else area
+                    if perm_unit == "und" or perm_qty > 0:
+                        results.append(
+                            Measurement("DWG", layer, "circle_perimeter", perm_qty, perm_unit,
+                                        "Circulo AutoCAD", 0.8)
+                        )
+                    if area_unit == "und" or area_qty > 0:
+                        results.append(
+                            Measurement("DWG", layer, "circle_area", area_qty, area_unit,
+                                        "Area de circulo AutoCAD", 0.8)
+                        )
 
             except Exception as exc:
                 errors += 1
