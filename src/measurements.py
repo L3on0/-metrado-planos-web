@@ -1,5 +1,15 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Iterable
+
+from src.classification import (
+    CAT_REFERENCE,
+    CAT_STRUCTURAL,
+    classify_measurement,
+    filter_structural,
+    is_structural,
+)
 
 
 @dataclass(frozen=True)
@@ -33,26 +43,33 @@ class MetradoItem:
         }
 
 
-def infer_partida(measurement: Measurement) -> tuple[str, str]:
-    layer = measurement.layer.lower()
-    text = measurement.description.lower()
+def classify(measurement: Measurement) -> tuple[str, str, str]:
+    """Clasifica un Measurement en (partida, descripcion, categoria).
 
-    if "muro" in layer or "wall" in layer or "muro" in text:
-        return "ARQ-01", "Muros detectados"
-    if "piso" in layer or "floor" in layer or "area" in measurement.unit:
-        return "ARQ-02", "Areas de piso o superficie"
-    if "zocalo" in layer or "baseboard" in layer:
-        return "ARQ-03", "Zocalos detectados"
-    if "cota" in layer or "dimension" in layer or measurement.element_type == "dimension_text":
-        return "REF-01", "Cotas de referencia"
-    return "GEN-01", "Elementos lineales generales"
+    Reemplaza a la antigua ``infer_partida()``. Usa el módulo de
+    clasificación inteligente por capa.
+    """
+    partida, descripcion, categoria = classify_measurement(
+        measurement.layer,
+        measurement.element_type,
+        measurement.description,
+    )
+    return partida, descripcion, categoria
 
 
-def build_metrado(measurements: Iterable[Measurement]) -> list[MetradoItem]:
+def build_metrado(measurements: Iterable[Measurement],
+                  include_reference: bool = False) -> list[MetradoItem]:
+    """Agrupa mediciones por partida y devuelve items de metrado.
+
+    Por defecto filta elementos de referencia (cotas, ejes, texto…).
+    Pasar ``include_reference=True`` para incluirlos.
+    """
     grouped: dict[tuple[str, str, str], list[Measurement]] = {}
 
     for measurement in measurements:
-        partida, descripcion = infer_partida(measurement)
+        partida, descripcion, categoria = classify(measurement)
+        if not include_reference and categoria == CAT_REFERENCE:
+            continue
         key = (partida, descripcion, measurement.unit)
         grouped.setdefault(key, []).append(measurement)
 
@@ -75,16 +92,29 @@ def build_metrado(measurements: Iterable[Measurement]) -> list[MetradoItem]:
     return sorted(items, key=lambda item: item.partida)
 
 
-def measurements_to_rows(measurements: Iterable[Measurement]) -> list[dict]:
-    return [
-        {
-            "fuente": item.source,
-            "capa": item.layer,
-            "tipo": item.element_type,
-            "cantidad": round(item.quantity, 3),
-            "unidad": item.unit,
-            "descripcion": item.description,
-            "confianza": round(item.confidence, 2),
-        }
-        for item in measurements
-    ]
+def measurements_to_rows(measurements: Iterable[Measurement],
+                         include_reference: bool = False) -> list[dict]:
+    """Convierte mediciones a filas planas para mostrar en tabla.
+
+    Por defecto excluye elementos de referencia.
+    """
+    rows = []
+    for m in measurements:
+        _partida, _desc, categoria = classify(m)
+        if not include_reference and categoria == CAT_REFERENCE:
+            continue
+        rows.append({
+            "fuente": m.source,
+            "capa": m.layer,
+            "tipo": m.element_type,
+            "cantidad": round(m.quantity, 3),
+            "unidad": m.unit,
+            "descripcion": m.description,
+            "confianza": round(m.confidence, 2),
+            "partida": _partida,
+        })
+    return rows
+
+
+# Mantener compatibilidad hacia atrás
+infer_partida = classify

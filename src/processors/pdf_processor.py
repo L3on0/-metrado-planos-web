@@ -1,12 +1,25 @@
+"""
+Procesador de archivos PDF de planos.
+
+Extrae mediciones desde:
+- Texto de dimensiones (cotas escritas como "12.5 m")
+- Líneas vectoriales del dibujo
+"""
+from __future__ import annotations
+
 import re
 from pathlib import Path
 
 import fitz
 
+from src.classification import is_structural
+from src.log_utils import get_logger, format_exception
 from src.measurements import Measurement
 
+logger = get_logger(__name__)
 
 DIMENSION_RE = re.compile(r"(?P<value>\d+(?:[.,]\d+)?)\s*(?P<unit>m|mt|mts|cm|mm)\b", re.IGNORECASE)
+PDF_LAYER = "pdf_plano"
 
 
 def _to_meters(value: float, unit: str) -> float:
@@ -20,48 +33,142 @@ def _to_meters(value: float, unit: str) -> float:
     return value
 
 
+def _is_annotation_text(text: str) -> bool:
+    """Detecta si un texto parece ser anotación (no medición)."""
+    upper = text.strip().upper()
+    # Textos típicos de anotación
+    annotations = {
+        "N", "S", "E", "O", "ESC", "ESCALA",
+        "NORTE", "SUR", "ESTE", "OESTE",
+        "PRIMER NIVEL", "SEGUNDO NIVEL", "TERCER NIVEL",
+        "CORTE", "ELEVACION", "DETALLE", "PLANTA",
+    }
+    if upper in annotations:
+        return True
+    # Textos que contienen solo letras (probablemente etiquetas)
+    if re.match(r"^[A-ZÁÉÍÓÚÑ\s]{2,20}$", upper) and not re.search(r"\d", upper):
+        return True
+    return False
+
+
 def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Measurement]:
-    doc = fitz.open(path)
+    """Extrae mediciones de un archivo PDF.
+
+    Args:
+        path: Ruta al archivo .pdf.
+        scale_factor: Factor de conversión a metros.
+
+    Returns:
+        Lista de mediciones extraídas.
+
+    Raises:
+        FileNotFoundError: Si el archivo no existe.
+        ValueError: Si el PDF está vacío, es escaneado o no se puede leer.
+    """
+    if not path.exists():
+        raise FileNotFoundError(f"Archivo PDF no encontrado: {path}")
+
+    if path.stat().st_size == 0:
+        raise ValueError(f"El archivo PDF está vacío: {path.name}")
+
+    # Intentar abrir el PDF
+    try:
+        doc = fitz.open(path)
+    except Exception as exc:
+        logger.error(f"Error al abrir PDF {path.name}: {format_exception(exc)}")
+        raise ValueError(
+            f"No se pudo abrir el archivo PDF '{path.name}'. "
+            "Puede estar corrupto o protegido."
+        ) from exc
+
     results: list[Measurement] = []
 
-    for page_index, page in enumerate(doc, start=1):
-        text = page.get_text("text")
-        for match in DIMENSION_RE.finditer(text):
-            raw = match.group("value").replace(",", ".")
-            unit = match.group("unit")
-            quantity = _to_meters(float(raw), unit)
-            results.append(
-                Measurement(
-                    "PDF",
-                    f"pagina_{page_index}",
-                    "dimension_text",
-                    quantity,
-                    "m",
-                    f"Cota textual: {match.group(0)}",
-                    0.75,
-                )
-            )
+    try:
+        if doc.page_count == 0:
+            raise ValueError(f"El PDF '{path.name}' no contiene páginas.")
 
-        drawings = page.get_drawings()
-        for drawing in drawings:
-            for item in drawing.get("items", []):
-                if item[0] != "l":
-                    continue
-                start, end = item[1], item[2]
-                dx = end.x - start.x
-                dy = end.y - start.y
-                length = ((dx * dx + dy * dy) ** 0.5) * scale_factor
-                if length > 0:
-                    results.append(
-                        Measurement(
-                            "PDF",
-                            f"pagina_{page_index}",
-                            "vector_line",
-                            length,
-                            "m",
-                            "Linea vectorial de PDF",
-                            0.45,
+        if doc.page_count > 50:
+            logger.warning(f"PDF con {doc.page_count} páginas - puede ser lento de procesar")
+
+        for page_index in range(doc.page_count):
+            try:
+                page = doc[page_index]
+                page_num = page_index + 1
+
+                # --- Extraer dimensiones textuales ---
+                text = page.get_text("text") or ""
+
+                # Detectar si es PDF escaneado (sin texto extraíble)
+                if page_index == 0 and not text.strip() and doc.page_count > 0:
+                    # Verificar si hay imágenes en la página
+                    images = page.get_images()
+                    if images:
+                        logger.info(f"PDF escaneado detectado en {path.name} "
+                                    f"({len(images)} imágenes). El OCR no está disponible aún.")
+                    # No lanzar error, solo continuar con vectores
+
+                for match in DIMENSION_RE.finditer(text):
+                    raw = match.group("value").replace(",", ".")
+                    unit = match.group("unit")
+                    full_text = match.group(0).strip()
+
+                    if _is_annotation_text(full_text):
+                        continue
+
+                    quantity = _to_meters(float(raw), unit)
+                    if quantity > 0:
+                        results.append(
+                            Measurement(
+                                PDF_LAYER,
+                                f"pagina_{page_num}",
+                                "dimension_text",
+                                quantity,
+                                "m",
+                                f"Cota textual: {full_text}",
+                                0.75,
+                            )
                         )
-                    )
 
+                # --- Extraer líneas vectoriales ---
+                drawings = page.get_drawings()
+                for drawing in drawings:
+                    try:
+                        for item in drawing.get("items", []):
+                            if item[0] != "l":
+                                continue
+                            start, end = item[1], item[2]
+                            dx = end.x - start.x
+                            dy = end.y - start.y
+                            length = ((dx * dx + dy * dy) ** 0.5) * scale_factor
+                            if length > 0.001:  # ignorar líneas minúsculas
+                                results.append(
+                                    Measurement(
+                                        PDF_LAYER,
+                                        f"pagina_{page_num}",
+                                        "vector_line",
+                                        length,
+                                        "m",
+                                        "Linea vectorial de PDF",
+                                        0.45,
+                                    )
+                                )
+                    except Exception as exc:
+                        logger.debug(f"Error procesando drawing en pág {page_num}: "
+                                     f"{format_exception(exc)}")
+                        continue
+
+            except Exception as exc:
+                logger.warning(f"Error procesando página {page_index + 1} de {path.name}: "
+                              f"{format_exception(exc)}")
+                continue
+
+    finally:
+        doc.close()
+
+    if not results:
+        logger.warning(f"No se extrajeron mediciones de {path.name}. "
+                       "Puede ser un PDF escaneado (solo imágenes) sin texto vectorial.")
+
+    logger.info(f"PDF {path.name}: {len(results)} mediciones extraídas "
+                f"({doc.page_count} páginas)")
     return results
