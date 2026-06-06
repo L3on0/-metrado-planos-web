@@ -141,6 +141,8 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                                 "m",
                                 f"Cota textual: {full_text}",
                                 0.75,
+                                coord_x=float(page_num) * 100,
+                                coord_y=0.0,
                             )
                         )
 
@@ -156,6 +158,8 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                             dy = end.y - start.y
                             length = ((dx * dx + dy * dy) ** 0.5) * scale_factor
                             if length > 0.001:  # ignorar líneas minúsculas
+                                cx = (start.x + end.x) / 2
+                                cy = (start.y + end.y) / 2
                                 results.append(
                                     Measurement(
                                         PDF_LAYER,
@@ -165,6 +169,8 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                                         "m",
                                         "Linea vectorial de PDF",
                                         0.45,
+                                        coord_x=cx,
+                                        coord_y=cy,
                                     )
                                 )
                     except Exception as exc:

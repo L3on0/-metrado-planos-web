@@ -133,8 +133,11 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                 if length > 0:
                     partida = classify_layer(layer).partida
                     unit = infer_unit(partida, "line")
+                    cx = (start.x + end.x) / 2.0
+                    cy = (start.y + end.y) / 2.0
                     results.append(
-                        Measurement("DXF", layer, "line", length, unit, "Linea detectada", 0.9)
+                        Measurement("DXF", layer, "line", length, unit, "Linea detectada", 0.9,
+                                    coord_x=cx, coord_y=cy)
                     )
 
             elif dxftype in {"LWPOLYLINE", "POLYLINE"}:
@@ -148,6 +151,9 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                 if len(points) >= 2:
                     partida = classify_layer(layer).partida
                     length = _polyline_length(points)
+                    # Centroide de la polilínea
+                    cx = sum(p[0] for p in points) / len(points)
+                    cy = sum(p[1] for p in points) / len(points)
                     if is_closed:
                         length += _polyline_length([points[-1], points[0]]) if len(points) > 1 else 0.0
                         area = _polygon_area(points) * (scale_factor**2)
@@ -156,7 +162,8 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                             area_qty = 1.0 if area_unit == "und" else area
                             results.append(
                                 Measurement("DXF", layer, "closed_polyline", area_qty, area_unit,
-                                            "Polilinea cerrada", 0.85)
+                                            "Polilinea cerrada", 0.85,
+                                            coord_x=cx, coord_y=cy)
                             )
                     # Para elementos contables (und), no crear medición de perímetro
                     if not (is_closed and infer_unit(partida, "closed_polyline") == "und"):
@@ -164,11 +171,14 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                         poly_qty = 1.0 if poly_unit == "und" else length * scale_factor
                         results.append(
                             Measurement("DXF", layer, "polyline", poly_qty, poly_unit,
-                                        "Polilinea detectada", 0.85)
+                                        "Polilinea detectada", 0.85,
+                                        coord_x=cx, coord_y=cy)
                         )
 
             elif dxftype == "CIRCLE":
                 partida = classify_layer(layer).partida
+                center = entity.dxf.center
+                cx, cy = center.x, center.y
                 radius = entity.dxf.radius * scale_factor
                 perimeter = 2 * 3.141592653589793 * radius
                 area = 3.141592653589793 * radius * radius
@@ -179,12 +189,14 @@ def extract_dxf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                 if perm_unit == "und" or perm_qty > 0:
                     results.append(
                         Measurement("DXF", layer, "circle_perimeter", perm_qty, perm_unit,
-                                    "Perimetro de circulo", 0.8)
+                                    "Perimetro de circulo", 0.8,
+                                    coord_x=cx, coord_y=cy)
                     )
                 if area_unit == "und" or area_qty > 0:
                     results.append(
                         Measurement("DXF", layer, "circle_area", area_qty, area_unit,
-                                    "Area de circulo", 0.8)
+                                    "Area de circulo", 0.8,
+                                    coord_x=cx, coord_y=cy)
                     )
 
         except Exception as exc:
