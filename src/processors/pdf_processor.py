@@ -4,6 +4,7 @@ Procesador de archivos PDF de planos.
 Extrae mediciones desde:
 - Texto de dimensiones (cotas escritas como "12.5 m")
 - Líneas vectoriales del dibujo
+- OCR para PDFs escaneados (con Tesseract)
 """
 from __future__ import annotations
 
@@ -15,6 +16,11 @@ import fitz
 from src.classification import is_structural
 from src.log_utils import get_logger, format_exception
 from src.measurements import Measurement
+from src.processors.ocr_processor import (
+    extract_ocr_measurements,
+    is_tesseract_available,
+    _is_scanned_pdf as _check_scanned,
+)
 
 logger = get_logger(__name__)
 
@@ -95,18 +101,25 @@ def extract_pdf_measurements(path: Path, scale_factor: float = 1.0) -> list[Meas
                 page = doc[page_index]
                 page_num = page_index + 1
 
-                # --- Extraer dimensiones textuales ---
+                # --- Detectar PDF escaneado y aplicar OCR ---
                 text = page.get_text("text") or ""
 
-                # Detectar si es PDF escaneado (sin texto extraíble)
-                if page_index == 0 and not text.strip() and doc.page_count > 0:
-                    # Verificar si hay imágenes en la página
+                if page_index == 0 and not text.strip():
                     images = page.get_images()
                     if images:
                         logger.info(f"PDF escaneado detectado en {path.name} "
-                                    f"({len(images)} imágenes). El OCR no está disponible aún.")
-                    # No lanzar error, solo continuar con vectores
+                                    f"({len(images)} imágenes por página). "
+                                    "Aplicando OCR...")
+                        # Cerrar el doc actual y delegar al OCR processor
+                        doc.close()
+                        ocr_results = extract_ocr_measurements(path)
+                        if not ocr_results:
+                            logger.warning(f"OCR no encontró dimensiones en {path.name}")
+                            return []
+                        logger.info(f"OCR: {len(ocr_results)} dimensiones encontradas")
+                        return ocr_results
 
+                # --- Extraer dimensiones textuales ---
                 for match in DIMENSION_RE.finditer(text):
                     raw = match.group("value").replace(",", ".")
                     unit = match.group("unit")
