@@ -13,6 +13,13 @@ from tempfile import NamedTemporaryFile
 import pandas as pd
 import streamlit as st
 
+from src.exporters.arquitectura_formato import (
+    build_arquitectura_excel,
+    build_arquitectura_pdf,
+    measurements_to_arquitectura,
+    metrado_to_arquitectura,
+    ItemArquitectura,
+)
 from src.exporters.capeco_tables import (
     build_capeco_tables,
     build_formatted_capeco_excel,
@@ -391,5 +398,51 @@ with tabs[3]:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             use_container_width=True,
         )
+
+        # ---- Formato Arquitectura (items individuales por ubicación) ----
+        st.divider()
+        st.subheader("Metrado de Arquitectura (items por ubicación)")
+
+        if "measurements" in st.session_state:
+            arqu_items = measurements_to_arquitectura(st.session_state["measurements"])
+        else:
+            arqu_items = metrado_to_arquitectura(items)
+
+        if arqu_items:
+            # Vista previa
+            with st.expander("📋 Vista previa", expanded=False):
+                preview_df = pd.DataFrame([
+                    {
+                        "Item": it.item_id,
+                        "Partida": it.partida,
+                        "Ubicación": it.ubicacion,
+                        "Descripción": it.descripcion[:60],
+                        "Und": it.unidad,
+                        "Cant.": it.cantidad,
+                    }
+                    for it in arqu_items
+                ])
+                st.dataframe(preview_df, use_container_width=True, hide_index=True)
+
+            # Descargas
+            arq_excel = build_arquitectura_excel(arqu_items, proyecto, specialty)
+            st.download_button(
+                "📥 Descargar Excel Arquitectura (items x ubicación)",
+                arq_excel,
+                file_name=f"arquitectura_{Path(uploaded.name).stem}.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True,
+            )
+
+            arq_pdf = build_arquitectura_pdf(arqu_items, proyecto)
+            st.download_button(
+                "📥 Descargar PDF Arquitectura (items x ubicación)",
+                arq_pdf,
+                file_name=f"arquitectura_{Path(uploaded.name).stem}.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        else:
+            st.info("No se encontraron elementos contables (und) para desglosar.")
     else:
         st.info("Sube un plano y presiona `Analizar plano` para habilitar descargas.")
